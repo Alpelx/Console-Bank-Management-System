@@ -9,17 +9,30 @@ package com.bankManagement.Panels;
 
 import com.bankManagement.Features.ConsoleFeatures;
 
+import java.util.InputMismatchException;
+
 public abstract class Menu {
     protected abstract void showMenuList();
 
     protected abstract boolean executeChoice(int choice);
 
     private int readChoice() {
-        System.out.print("Enter your choice: ");
-        return ConsoleFeatures.SCANNER.nextInt();
+        try {
+            System.out.print("Enter your choice: ");
+            return ConsoleFeatures.SCANNER.nextInt();
+        } catch (InputMismatchException e) {
+            ConsoleFeatures.SCANNER.next();
+            System.out.println(ConsoleFeatures.RED_BOLD +
+                    "Error [ Please enter a valid number ]" +
+                    ConsoleFeatures.RESET);
+            System.out.println();
+            return -1;
+        }
+
+
     }
 
-    protected void run() {
+    public void run() {
         do {
             showMenuList();
         } while (executeChoice(readChoice()));

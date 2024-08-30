@@ -9,10 +9,9 @@ package com.bankManagement;
  * 3 ways to log in: as user, as employee, as admin. Each one has his
  * own features and restrictions.
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main(String[] args) {
         BankLauncher bankLauncher = new BankLauncher();
+        bankLauncher.run();
     }
 }
