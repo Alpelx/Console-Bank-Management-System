@@ -1,24 +1,45 @@
 package com.bankManagement.AccountManagement;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
+/**
+ * @Description this is the class that performs the login process of
+ * any type of account, regardless of whether it is an employee, admin
+ * or a simple user. This class provide login process for each of 'em
+ */
+
 import com.bankManagement.Database.MySql;
 import com.bankManagement.Exceptions.AccountNotFoundException;
 import com.bankManagement.Features.ConsoleFeatures;
-import org.jetbrains.annotations.NotNull;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public abstract class LoggingIn extends MySql {
-    public static @NotNull void loginAsEmployee(String login, String password) {
+    public static Employee loginAsEmployee(String login, String password) {
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            if (!isValidAccount(statement, login, password)) {
+            if (!isValidAccount(connection, login, password,
+                    "employee_accounts")) {
+                statement.close();
                 throw new AccountNotFoundException();
             } else {
-                System.out.println("Welcome " + login);
+                statement.close();
+                String query = "SELECT e.* FROM employees e, " +
+                        "employee_accounts ea WHERE ea.account_name = " +
+                        "? and ea.account_password = ? and e.id = " +
+                        "ea.employee_id";
+                PreparedStatement preparedStatement =
+                        connection.prepareStatement(query);
+                preparedStatement.setString(1, login);
+                preparedStatement.setString(2, password);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    return new Employee(rs.getInt("id"),
+                            rs.getString("idnp"),
+                            rs.getString("firstname"),
+                            rs.getString("lastname"),
+                            rs.getDate("birthday").toLocalDate(),
+                            rs.getString("function_at_work"),
+                            rs.getInt("work_experience"));
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -28,44 +49,24 @@ public abstract class LoggingIn extends MySql {
                     ConsoleFeatures.RESET);
             System.out.println();
         }
+        return null;
     }
 
-    private static boolean isValidAccount(Statement statement, String login, String password) {
-        String query1 =
-                "SELECT EXISTS (SELECT 1 FROM employee_accounts " +
-                        "WHERE account_name = '" + login + "');";
-        String query2 =
-                "SELECT account_password FROM employee_accounts " +
-                        "WHERE account_name = '" + login + "';";
-        try {
-            return isValidLogin(statement, query1) &&
-                    isValidPassword(statement, login, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    private static boolean isValidPassword(Statement statement, String password, String query2)
+    private static boolean isValidAccount(Connection connection, String login, String password, String tableName)
             throws SQLException {
-        ResultSet resultSet;
-        resultSet = statement.executeQuery(query2);
-        String hashedPassword = "";
-        while (resultSet.next()) {
-            hashedPassword = resultSet.getString(1);
-        }
-        return BCrypt.verifyer()
-                .verify(password.toCharArray(), hashedPassword).verified;
-    }
-
-    private static boolean isValidLogin(Statement statement, String query1)
-            throws SQLException {
-        ResultSet resultSet = statement.executeQuery(query1);
-        while (resultSet.next()) {
-            if (resultSet.getInt(1) == 0) {
-                return true;
+        String query1 = "SELECT EXISTS (SELECT 1 FROM " + tableName +
+                " WHERE account_name = ? AND account_password = ?);";
+        PreparedStatement preparedStatement =
+                connection.prepareStatement(query1);
+        preparedStatement.setString(1, login);
+        preparedStatement.setString(2, password);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            if (rs.getInt(1) == 0) {
+                return false;
             }
         }
-        return false;
+
+        return true;
     }
 }

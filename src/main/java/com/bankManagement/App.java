@@ -1,5 +1,7 @@
 package com.bankManagement;
 
+import com.bankManagement.Panels.BankLauncher;
+
 /**
  * @Author Scirba Mihail
  * @Goals In this project I have goal to master JDBC API and how

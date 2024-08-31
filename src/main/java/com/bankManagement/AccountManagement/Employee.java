@@ -1,5 +1,12 @@
 package com.bankManagement.AccountManagement;
 
+/**
+ * @Description This is the class that define an employee to make
+ * easier managing his data and operations through the java program
+ */
+
+import com.bankManagement.Features.ConsoleFeatures;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -11,7 +18,6 @@ public class Employee {
     private LocalDate dateOfBirth;
     private String functionAtWork;
     private int workExperience;
-    private boolean hasAccount;
 
     public Employee(int id, String idnp, String firstname, String lastname, LocalDate dateOfBirth, String functionAtWork, int workExperience) {
         this.id = id;
@@ -23,26 +29,17 @@ public class Employee {
         this.workExperience = workExperience;
     }
 
-    public Employee(int id, String idnp, String firstname, String lastname, LocalDate dateOfBirth, String functionAtWork, int workExperience, boolean hasAccount) {
-        this.id = id;
-        this.idnp = idnp;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.dateOfBirth = dateOfBirth;
-        this.functionAtWork = functionAtWork;
-        this.workExperience = workExperience;
-        this.hasAccount = hasAccount;
-    }
-
     @Override
     public String toString() {
         DateTimeFormatter dateTimeFormatter =
                 DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return "Id: " + id + "\nIdnp: " + idnp + "\nFirstname: " +
-                firstname + "\nLastname: " + lastname +
-                "\nDate of birth: " +
+        return ConsoleFeatures.BLUE_BOLD + "\nMy Data: " +
+                ConsoleFeatures.BLUE + "\nId: " + id + "\nIdnp: " +
+                idnp + "\nFirstname: " + firstname + "\nLastname: " +
+                lastname + "\nDate of birth: " +
                 dateOfBirth.format(dateTimeFormatter) +
                 "\nFunction at work: " + functionAtWork +
-                "\nWork Experience: " + workExperience;
+                "\nWork Experience: " + workExperience + "\n\n" +
+                ConsoleFeatures.RESET;
     }
 }

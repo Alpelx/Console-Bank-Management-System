@@ -18,7 +18,9 @@ public abstract class Menu {
 
     private int readChoice() {
         try {
-            System.out.print("Enter your choice: ");
+            System.out.print(
+                    ConsoleFeatures.GREEN_BOLD + "Enter your choice: " +
+                            ConsoleFeatures.RESET);
             return ConsoleFeatures.SCANNER.nextInt();
         } catch (InputMismatchException e) {
             ConsoleFeatures.SCANNER.next();
