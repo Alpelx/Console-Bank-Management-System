@@ -2,6 +2,7 @@ package com.bankManagement.Panels;
 
 import com.bankManagement.AccountManagement.Employee;
 import com.bankManagement.AccountManagement.LoggingIn;
+import com.bankManagement.AccountManagement.Registering;
 import com.bankManagement.Features.ConsoleFeatures;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,6 +16,15 @@ public class BankLauncher extends Menu {
 
     }
 
+    private static @Nullable Employee getEmployee() {
+        String login = ConsoleFeatures.readAccountData(
+                ConsoleFeatures.DataReadTypes.Login);
+        String password = ConsoleFeatures.readAccountData(
+                ConsoleFeatures.DataReadTypes.Password);
+        System.out.println("\n");
+        return LoggingIn.loginAsEmployee(login, password);
+    }
+
     @Override
     protected void showMenuList() {
         System.out.println(
@@ -22,7 +32,8 @@ public class BankLauncher extends Menu {
                         ConsoleFeatures.PURPLE +
                         "(1) -> Log in as an employee\n" +
                         "(2) -> Log in as an admin\n" +
-                        "(3) -> Log in as an user\n" + "(0) -> Exit" +
+                        "(3) -> Log in as an user\n" +
+                        "(4) -> Register an account\n" + "(0) -> Exit" +
                         ConsoleFeatures.RESET);
     }
 
@@ -37,9 +48,13 @@ public class BankLauncher extends Menu {
                     employeePanel.run();
                 }
                 break;
+            case 4:
+                RegisterPanel registerPanel = new RegisterPanel();
+                registerPanel.run();
+                break;
             case 0:
                 System.out.println(ConsoleFeatures.RED_BOLD +
-                        "You have closed the employee panel" +
+                        "You have closed the program" +
                         ConsoleFeatures.RESET);
                 return false;
             case -1:
@@ -51,14 +66,5 @@ public class BankLauncher extends Menu {
                 break;
         }
         return true;
-    }
-
-    private static @Nullable Employee getEmployee() {
-        String login = ConsoleFeatures.readAccountData(
-                ConsoleFeatures.DataReadTypes.Login);
-        String password = ConsoleFeatures.readAccountData(
-                ConsoleFeatures.DataReadTypes.Password);
-        System.out.println("\n");
-        return LoggingIn.loginAsEmployee(login, password);
     }
 }

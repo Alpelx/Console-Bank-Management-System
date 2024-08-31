@@ -29,6 +29,10 @@ public class Employee {
         this.workExperience = workExperience;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter dateTimeFormatter =
