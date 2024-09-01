@@ -14,12 +14,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class MySql {
-    private static final String HOST =
-            "jdbc:mysql://localhost:3306/bank_system";
-    private static final String USER = "root";
-    private static final String PASSWORD = "linella1922";
-
-    protected static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(HOST, USER, PASSWORD);
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/bank_system" ,
+                "root",
+                "linella1922"
+        );
     }
 }

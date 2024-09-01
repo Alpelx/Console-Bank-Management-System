@@ -1,20 +1,18 @@
 package com.bankManagement.Panels;
 
-import com.bankManagement.AccountManagement.Employee;
-import com.bankManagement.AccountManagement.Login;
-import com.bankManagement.Features.ConsoleFeatures;
-import org.jetbrains.annotations.Nullable;
-
 /**
  * @Description This is the main class of bank management
  * system. Here are called and used all main methods.
  */
 
+
+import com.bankManagement.AccountManagement.Employee;
+import com.bankManagement.AccountManagement.Login;
+import com.bankManagement.Features.ConsoleFeatures;
+import org.jetbrains.annotations.Nullable;
+
 public class BankLauncher extends Menu {
     AdminPanel adminPanel = new AdminPanel();
-    public BankLauncher() {
-
-    }
 
     @Override
     protected void showMenuList() {

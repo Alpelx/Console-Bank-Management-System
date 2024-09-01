@@ -1,15 +1,22 @@
 package com.bankManagement.AccountManagement;
 
+/**
+ * @Description this is the class where is performed account registration
+ * for an employee or user. There are one main public methods what is
+ * called to register and some private methods to increase readability
+ * and make code cleaner
+ */
+
 import com.bankManagement.Database.MySql;
 import com.bankManagement.Features.ConsoleFeatures;
 
 import java.sql.*;
 
-public class Registration extends MySql {
+public class Registration {
 
     public static void registerAccount(AccountType accountType) {
         int id = getId(accountType);
-        try (Connection connection = getConnection()) {
+        try (Connection connection = MySql.getConnection()) {
             if (!isValidId(connection, id, accountType)) {
                 errorNonValidIdMessage(accountType);
             } else {
@@ -110,6 +117,4 @@ public class Registration extends MySql {
         }
         connection.prepareStatement(updateQuery).executeUpdate();
     }
-
-
 }

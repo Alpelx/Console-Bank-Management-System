@@ -1,5 +1,11 @@
 package com.bankManagement.Panels;
 
+/**
+ * @Description this is the class what define register panel. Here
+ * employees or users are able to register their own account. Only is one
+ * account allowed.
+ */
+
 import com.bankManagement.AccountManagement.AccountType;
 import com.bankManagement.AccountManagement.Registration;
 import com.bankManagement.Features.ConsoleFeatures;

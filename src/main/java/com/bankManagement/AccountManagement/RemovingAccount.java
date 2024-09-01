@@ -1,14 +1,18 @@
 package com.bankManagement.AccountManagement;
 
+/**
+ * @Description this is the class what provide removing account
+ */
+
 import com.bankManagement.Database.MySql;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class RemovingAccount extends MySql {
+public class RemovingAccount {
     public static void dismissEmployee(int employeeId) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = MySql.getConnection()) {
             String removeAccountQuery =
                     "DELETE FROM employee_accounts WHERE " +
                             "employee_id = " + employeeId;

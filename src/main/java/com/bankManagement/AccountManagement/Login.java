@@ -13,9 +13,9 @@ import com.bankManagement.Features.ConsoleFeatures;
 
 import java.sql.*;
 
-public abstract class Login extends MySql {
+public abstract class Login {
     public static Employee loginAsEmployee(String login, String password) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = MySql.getConnection()) {
             if (!isValidAccount(connection, login, password,
                     "employee_accounts")) {
                 throw new AccountNotFoundException();
@@ -51,7 +51,7 @@ public abstract class Login extends MySql {
     }
 
     public static boolean loginAsAdmin(String login, String password) {
-        try (Connection connection = getConnection()) {
+        try (Connection connection = MySql.getConnection()) {
             if (!isValidAccount(connection, login, password,
                     "employee_accounts")) {
                 throw new AccountNotFoundException();
