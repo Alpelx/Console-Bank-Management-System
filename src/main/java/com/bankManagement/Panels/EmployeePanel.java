@@ -22,9 +22,9 @@ public class EmployeePanel extends Menu {
         System.out.println(
                 ConsoleFeatures.CYAN_BOLD + "Employee Panel:\n" +
                         ConsoleFeatures.CYAN +
-                        "[1] - Display my data\n" +
-                        "[2] - Dismiss from work\n" +
-                        "[0] - Close employee panel" +
+                        "[1] -> Display my data\n" +
+                        "[2] -> Dismiss from work\n" +
+                        "[0] -> Close employee panel" +
                         ConsoleFeatures.RESET);
     }
 
@@ -37,13 +37,13 @@ public class EmployeePanel extends Menu {
             case 2:
                 RemovingAccount.dismissEmployee(employee.getId());
                 return false;
-            case -1:
-                return false;
             case 0:
                 System.out.println(ConsoleFeatures.RED_BOLD +
                         "You have closed the employee panel" +
                         ConsoleFeatures.RESET + "\n\n");
                 return false;
+            case -1:
+                return true;
             default:
                 System.out.println(ConsoleFeatures.RED_BOLD +
                         "Error [ Wrong input ]" + ConsoleFeatures.RESET);

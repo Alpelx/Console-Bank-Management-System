@@ -1,5 +1,6 @@
 package com.bankManagement.Panels;
 
+import com.bankManagement.AccountManagement.AccountType;
 import com.bankManagement.AccountManagement.Registration;
 import com.bankManagement.Features.ConsoleFeatures;
 
@@ -17,7 +18,11 @@ public class RegisterPanel extends Menu{
     protected boolean executeChoice(int choice) {
         switch (choice) {
             case 1:
-                Registration.registerAsEmployee();
+                Registration.registerAccount(AccountType.employee);
+                System.out.println("\n\n");
+                break;
+            case 2:
+                Registration.registerAccount(AccountType.user);
                 System.out.println("\n\n");
                 break;
             case 0:
@@ -26,7 +31,7 @@ public class RegisterPanel extends Menu{
                         ConsoleFeatures.RESET + "\n\n");
                 return false;
             case -1:
-                return false;
+                return true;
             default:
                 System.out.println(ConsoleFeatures.RED_BOLD +
                         "Error [ Wrong input ]" + ConsoleFeatures.RESET);

@@ -50,7 +50,7 @@ public abstract class Login extends MySql {
         return null;
     }
 
-    public static void loginAsAdmin(String login, String password) {
+    public static boolean loginAsAdmin(String login, String password) {
         try (Connection connection = getConnection()) {
             if (!isValidAccount(connection, login, password,
                     "employee_accounts")) {
@@ -58,17 +58,7 @@ public abstract class Login extends MySql {
             } else if (!isAdministrator(connection, login, password)) {
                 throw new AdminPermissionDeniedException();
             } else {
-                String query = "SELECT e.* FROM employees e, " +
-                        "employee_accounts ea WHERE ea.account_name = " +
-                        "? AND ea.account_password = ? AND e.id = " +
-                        "ea.employee_id";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, login);
-                preparedStatement.setString(2, password);
-                ResultSet rs = preparedStatement.executeQuery();
-                while (rs.next()) {
-                    System.out.println("Logged successfully");
-                }
+                return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,6 +73,7 @@ public abstract class Login extends MySql {
                     ConsoleFeatures.RESET);
             System.out.println();
         }
+        return false;
     }
 
     private static boolean isValidAccount(Connection connection, String login,

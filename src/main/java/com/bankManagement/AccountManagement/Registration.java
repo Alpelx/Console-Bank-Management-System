@@ -6,32 +6,49 @@ import com.bankManagement.Features.ConsoleFeatures;
 import java.sql.*;
 
 public class Registration extends MySql {
-    private enum AccountType {
-        user, employee
-    }
 
-    public static void registerAsEmployee() {
-        System.out.print(
-                ConsoleFeatures.GREEN_BOLD + "Enter employee id: " +
-                        ConsoleFeatures.RESET);
-        int employeeId = ConsoleFeatures.SCANNER.nextInt();
+    public static void registerAccount(AccountType accountType) {
+        int id = getId(accountType);
         try (Connection connection = getConnection()) {
-            if (!isValidId(connection, employeeId, AccountType.employee)) {
-                System.out.println(ConsoleFeatures.RED_BOLD +
-                        "Error [ Employee doesn't exists or already " +
-                        "has account" + ConsoleFeatures.RESET);
+            if (!isValidId(connection, id, accountType)) {
+                errorNonValidIdMessage(accountType);
             } else {
                 String login = ConsoleFeatures.readAccountData(
                         ConsoleFeatures.DataReadTypes.Login);
                 String password = ConsoleFeatures.readAccountData(
                         ConsoleFeatures.DataReadTypes.Password);
                 insertIntoAccounts(connection, login, password,
-                        employeeId, AccountType.employee);
-                updateHasAccount(connection, employeeId, AccountType.employee);
+                        id, accountType);
+                updateHasAccount(connection, id, accountType);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void errorNonValidIdMessage(AccountType accountType) {
+        if (accountType == AccountType.employee) {
+            System.out.println(ConsoleFeatures.RED_BOLD +
+                    "Error [ Employee doesn't exists or already " +
+                    "has account ]" + ConsoleFeatures.RESET);
+        } else {
+            System.out.println(ConsoleFeatures.RED_BOLD +
+                    "Error [ User doesn't exists or already " +
+                    "has account ]" + ConsoleFeatures.RESET);
+        }
+    }
+
+    private static int getId(AccountType accountType) {
+        if (accountType == AccountType.employee) {
+            System.out.print(
+                    ConsoleFeatures.GREEN_BOLD + "Enter employee id: " +
+                            ConsoleFeatures.RESET);
+        } else {
+            System.out.print(
+                    ConsoleFeatures.GREEN_BOLD + "Enter user id: " +
+                            ConsoleFeatures.RESET);
+        }
+        return ConsoleFeatures.SCANNER.nextInt();
     }
 
     private static boolean isValidId(Connection connection, int id,
@@ -67,7 +84,7 @@ public class Registration extends MySql {
                     "employee_id) VALUES" + "(?, ?, 'regular', ?)";
         } else {
             insertQuery = "INSERT INTO user_accounts " +
-                    "(id, username, user_password, user_id) VALUES " +
+                    "(username, user_password, user_id) VALUES " +
                     "(?, ?, ?)";
         }
         PreparedStatement statement =
@@ -91,7 +108,6 @@ public class Registration extends MySql {
             updateQuery =
                     "UPDATE users SET has_account = 1 WHERE id = " + refId;
         }
-
         connection.prepareStatement(updateQuery).executeUpdate();
     }
 

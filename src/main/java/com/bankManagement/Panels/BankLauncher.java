@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
  */
 
 public class BankLauncher extends Menu {
+    AdminPanel adminPanel = new AdminPanel();
     public BankLauncher() {
 
     }
@@ -43,7 +44,9 @@ public class BankLauncher extends Menu {
                         ConsoleFeatures.DataReadTypes.Login);
                 String password = ConsoleFeatures.readAccountData(
                         ConsoleFeatures.DataReadTypes.Password);
-                Login.loginAsAdmin(login, password);
+                if (Login.loginAsAdmin(login, password)) {
+                    adminPanel.run();
+                }
                 break;
             case 4:
                 RegisterPanel registerPanel = new RegisterPanel();
