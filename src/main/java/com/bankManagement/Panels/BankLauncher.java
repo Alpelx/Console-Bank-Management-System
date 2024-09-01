@@ -2,7 +2,6 @@ package com.bankManagement.Panels;
 
 import com.bankManagement.AccountManagement.Employee;
 import com.bankManagement.AccountManagement.LoggingIn;
-import com.bankManagement.AccountManagement.Registering;
 import com.bankManagement.Features.ConsoleFeatures;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,15 +13,6 @@ import org.jetbrains.annotations.Nullable;
 public class BankLauncher extends Menu {
     public BankLauncher() {
 
-    }
-
-    private static @Nullable Employee getEmployee() {
-        String login = ConsoleFeatures.readAccountData(
-                ConsoleFeatures.DataReadTypes.Login);
-        String password = ConsoleFeatures.readAccountData(
-                ConsoleFeatures.DataReadTypes.Password);
-        System.out.println("\n");
-        return LoggingIn.loginAsEmployee(login, password);
     }
 
     @Override
@@ -66,5 +56,14 @@ public class BankLauncher extends Menu {
                 break;
         }
         return true;
+    }
+
+    private static @Nullable Employee getEmployee() {
+        String login = ConsoleFeatures.readAccountData(
+                ConsoleFeatures.DataReadTypes.Login);
+        String password = ConsoleFeatures.readAccountData(
+                ConsoleFeatures.DataReadTypes.Password);
+        System.out.println("\n");
+        return LoggingIn.loginAsEmployee(login, password);
     }
 }

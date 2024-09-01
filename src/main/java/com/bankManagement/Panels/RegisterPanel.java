@@ -18,18 +18,21 @@ public class RegisterPanel extends Menu{
         switch (choice) {
             case 1:
                 Registering.registerAsEmployee();
+                System.out.println("\n\n");
                 break;
             case 0:
                 System.out.println(ConsoleFeatures.RED_BOLD +
                         "You have closed the register panel" +
-                        ConsoleFeatures.RESET);
-                break;
+                        ConsoleFeatures.RESET + "\n\n");
+                return false;
+            case -1:
+                return false;
             default:
                 System.out.println(ConsoleFeatures.RED_BOLD +
                         "Error [ Wrong input ]" + ConsoleFeatures.RESET);
                 System.out.println();
-                return true;
+                break;
         }
-        return false;
+        return true;
     }
 }

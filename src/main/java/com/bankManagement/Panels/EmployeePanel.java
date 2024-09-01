@@ -11,7 +11,7 @@ import com.bankManagement.AccountManagement.RemovingAccount;
 import com.bankManagement.Features.ConsoleFeatures;
 
 public class EmployeePanel extends Menu {
-    private Employee employee;
+    private final Employee employee;
 
     public EmployeePanel(Employee employee) {
         this.employee = employee;
@@ -37,10 +37,12 @@ public class EmployeePanel extends Menu {
             case 2:
                 RemovingAccount.dismissEmployee(employee.getId());
                 return false;
+            case -1:
+                return false;
             case 0:
                 System.out.println(ConsoleFeatures.RED_BOLD +
                         "You have closed the employee panel" +
-                        ConsoleFeatures.RESET);
+                        ConsoleFeatures.RESET + "\n\n");
                 return false;
             default:
                 System.out.println(ConsoleFeatures.RED_BOLD +
