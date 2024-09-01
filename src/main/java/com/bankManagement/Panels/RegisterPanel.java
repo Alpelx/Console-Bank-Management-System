@@ -1,6 +1,6 @@
 package com.bankManagement.Panels;
 
-import com.bankManagement.AccountManagement.Registering;
+import com.bankManagement.AccountManagement.Registration;
 import com.bankManagement.Features.ConsoleFeatures;
 
 public class RegisterPanel extends Menu{
@@ -17,7 +17,7 @@ public class RegisterPanel extends Menu{
     protected boolean executeChoice(int choice) {
         switch (choice) {
             case 1:
-                Registering.registerAsEmployee();
+                Registration.registerAsEmployee();
                 System.out.println("\n\n");
                 break;
             case 0:

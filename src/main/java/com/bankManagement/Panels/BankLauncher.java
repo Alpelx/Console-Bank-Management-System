@@ -1,7 +1,7 @@
 package com.bankManagement.Panels;
 
 import com.bankManagement.AccountManagement.Employee;
-import com.bankManagement.AccountManagement.LoggingIn;
+import com.bankManagement.AccountManagement.Login;
 import com.bankManagement.Features.ConsoleFeatures;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,6 +38,13 @@ public class BankLauncher extends Menu {
                     employeePanel.run();
                 }
                 break;
+            case 2:
+                String login = ConsoleFeatures.readAccountData(
+                        ConsoleFeatures.DataReadTypes.Login);
+                String password = ConsoleFeatures.readAccountData(
+                        ConsoleFeatures.DataReadTypes.Password);
+                Login.loginAsAdmin(login, password);
+                break;
             case 4:
                 RegisterPanel registerPanel = new RegisterPanel();
                 registerPanel.run();
@@ -64,6 +71,6 @@ public class BankLauncher extends Menu {
         String password = ConsoleFeatures.readAccountData(
                 ConsoleFeatures.DataReadTypes.Password);
         System.out.println("\n");
-        return LoggingIn.loginAsEmployee(login, password);
+        return Login.loginAsEmployee(login, password);
     }
 }
