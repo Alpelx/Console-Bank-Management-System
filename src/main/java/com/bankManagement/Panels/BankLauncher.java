@@ -6,72 +6,62 @@ package com.bankManagement.Panels;
  */
 
 
-import com.bankManagement.AccountManagement.Employee;
+import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.AccountManagement.Login;
-import com.bankManagement.Features.ConsoleFeatures;
-import org.jetbrains.annotations.Nullable;
+import com.bankManagement.Features.ConsoleReading;
+import com.bankManagement.Features.ConsoleTextColors;
 
 public class BankLauncher extends Menu {
     AdminPanel adminPanel = new AdminPanel();
 
     @Override
     protected void showMenuList() {
-        System.out.println(
-                ConsoleFeatures.PURPLE_BOLD + "WELCOME TO OUR BANK!\n" +
-                        ConsoleFeatures.PURPLE +
-                        "(1) -> Log in as an employee\n" +
-                        "(2) -> Log in as an admin\n" +
-                        "(3) -> Log in as an user\n" +
-                        "(4) -> Register an account\n" + "(0) -> Exit" +
-                        ConsoleFeatures.RESET);
+        System.out.println(ConsoleTextColors.PURPLE_BOLD
+                + "WELCOME TO OUR BANK!\n" + ConsoleTextColors.PURPLE
+                + "(1) -> Log in as an employee\n"
+                + "(2) -> Log in as an admin\n"
+                + "(3) -> Log in as an user\n"
+                + "(4) -> Register an account\n"
+                + "(0) -> Exit"
+                + ConsoleTextColors.RESET);
     }
 
     @Override
     protected boolean executeChoice(int choice) {
         switch (choice) {
             case 1:
-                Employee employee = getEmployee();
-                if (employee != null) {
-                    EmployeePanel employeePanel =
-                            new EmployeePanel(employee);
-                    employeePanel.run();
-                }
-                break;
-            case 2:
-                String login = ConsoleFeatures.readAccountData(
-                        ConsoleFeatures.DataReadTypes.Login);
-                String password = ConsoleFeatures.readAccountData(
-                        ConsoleFeatures.DataReadTypes.Password);
-                if (Login.loginAsAdmin(login, password)) {
-                    adminPanel.run();
-                }
+                logInAsEmployee();
                 break;
             case 4:
                 RegisterPanel registerPanel = new RegisterPanel();
                 registerPanel.run();
                 break;
             case 0:
-                System.out.println(ConsoleFeatures.RED_BOLD +
-                        "You have closed the program" +
-                        ConsoleFeatures.RESET);
+                System.out.println(ConsoleTextColors.RED_BOLD
+                        + "You have closed the program"
+                        + ConsoleTextColors.RESET);
                 return false;
             case -1:
                 return true;
             default:
-                System.out.println(ConsoleFeatures.RED_BOLD +
-                        "Error [ Wrong input ]" + ConsoleFeatures.RESET);
+                System.out.println(ConsoleTextColors.RED_BOLD
+                        + "Error [ Wrong input ]"
+                        + ConsoleTextColors.RESET);
                 System.out.println();
                 break;
         }
         return true;
     }
 
-    private static @Nullable Employee getEmployee() {
-        String login = ConsoleFeatures.readAccountData(
-                ConsoleFeatures.DataReadTypes.Login);
-        String password = ConsoleFeatures.readAccountData(
-                ConsoleFeatures.DataReadTypes.Password);
-        System.out.println("\n");
-        return Login.loginAsEmployee(login, password);
+    private static void logInAsEmployee() {
+        Employee employee = Login.logInAsEmployee(
+                ConsoleReading.readLogin(),
+                ConsoleReading.readPassword()
+        );
+        if (employee != null) {
+            EmployeePanel employeePanel =
+                    new EmployeePanel(employee);
+            employeePanel.run();
+        }
     }
 }

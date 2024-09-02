@@ -7,7 +7,8 @@ package com.bankManagement.Panels;
  * when i need it
  */
 
-import com.bankManagement.Features.ConsoleFeatures;
+import com.bankManagement.Features.ConsoleReading;
+import com.bankManagement.Features.ConsoleTextColors;
 
 import java.util.InputMismatchException;
 
@@ -18,15 +19,14 @@ public abstract class Menu {
 
     private int readChoice() {
         try {
-            System.out.print(
-                    ConsoleFeatures.GREEN_BOLD + "Enter your choice: " +
-                            ConsoleFeatures.RESET);
-            return ConsoleFeatures.SCANNER.nextInt();
+            System.out.print(ConsoleTextColors.GREEN_BOLD
+                    + "Enter your choice: " + ConsoleTextColors.RESET);
+            return ConsoleReading.SCANNER.nextInt();
         } catch (InputMismatchException e) {
-            ConsoleFeatures.SCANNER.next();
-            System.out.println(ConsoleFeatures.RED_BOLD +
-                    "Error [ Please enter a valid number ]" +
-                    ConsoleFeatures.RESET);
+            ConsoleReading.SCANNER.next();
+            System.out.println(ConsoleTextColors.RED_BOLD
+                    + "Error [ Please enter a valid number ]"
+                    + ConsoleTextColors.RESET);
             System.out.println();
             return -1;
         }
