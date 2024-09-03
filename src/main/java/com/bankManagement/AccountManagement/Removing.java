@@ -2,8 +2,12 @@ package com.bankManagement.AccountManagement;
 
 import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeAccountActions;
 import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeActions;
+import com.bankManagement.AccountManagement.DAO_Implimentations.UserAccountActions;
+import com.bankManagement.AccountManagement.DAO_Implimentations.UserActions;
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.AccountManagement.DAO_Models.EmployeeAccount;
+import com.bankManagement.AccountManagement.DAO_Models.User;
+import com.bankManagement.AccountManagement.DAO_Models.UserAccount;
 import com.bankManagement.Features.ConsoleTextColors;
 
 /**
@@ -11,19 +15,26 @@ import com.bankManagement.Features.ConsoleTextColors;
  */
 
 public class Removing {
-    public static void dismissEmployee(Employee employee) {
-        try {
-            EmployeeActions employeeDAO = new EmployeeActions();
-            EmployeeAccountActions employeeAccountDAO
-                    = new EmployeeAccountActions();
-            EmployeeAccount employeeAccount = employeeAccountDAO
-                    .getEmployeeAccount(employee.getId());
-            employeeAccountDAO.deleteEmployeeAccount(employeeAccount);
-            employeeDAO.deleteEmployee(employee);
-        } catch (NullPointerException e) {
-            System.out.println(ConsoleTextColors.RED_BOLD
-                    + "Error [ something went wrong ]"
-                    + ConsoleTextColors.RESET);
+    public static void removeEmployee(Employee employee) {
+        EmployeeActions employeeActions = new EmployeeActions();
+        EmployeeAccountActions employeeAccountActions
+                = new EmployeeAccountActions();
+        EmployeeAccount employeeAccount = employeeAccountActions
+                .getEmployeeAccount(employee.getId());
+        if (employeeAccount != null) {
+            employeeAccountActions.deleteEmployeeAccount(employeeAccount);
         }
+        employeeActions.deleteEmployee(employee);
+    }
+
+    public static void removeUser(User user) {
+        UserActions userActions = new UserActions();
+        UserAccountActions userAccountActions = new UserAccountActions();
+        UserAccount userAccount = userAccountActions
+                .getUserAccount(user.getId());
+        if (userAccount != null) {
+            userAccountActions.deleteUserAccount(userAccount);
+        }
+        userActions.deleteUser(user);
     }
 }

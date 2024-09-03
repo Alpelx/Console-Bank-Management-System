@@ -34,7 +34,7 @@ public class EmployeePanel extends Menu {
                 System.out.println(employee);
                 break;
             case 2:
-                Removing.dismissEmployee(employee);
+                Removing.removeEmployee(employee);
                 return false;
             case 0:
                 System.out.println(ConsoleTextColors.RED_BOLD

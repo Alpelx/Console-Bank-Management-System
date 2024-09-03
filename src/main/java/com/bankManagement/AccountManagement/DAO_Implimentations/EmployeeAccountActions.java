@@ -100,26 +100,4 @@ public class EmployeeAccountActions implements EmployeeAccountDAO {
             e.printStackTrace();
         }
     }
-
-//    @Override
-//    public LinkedList<EmployeeAccount> getAllEmployeeAccounts() {
-//        LinkedList<EmployeeAccount> employeeAccounts = new LinkedList<>();
-//        String query = "SELECT * FROM employee_accounts";
-//        try (Connection connection = MySql.getConnection()) {
-//            PreparedStatement stmt = connection.prepareStatement(query);
-//            ResultSet rs = stmt.executeQuery();
-//            while (rs.next()) {
-//                employeeAccounts.add(new EmployeeAccount(
-//                        rs.getInt("id"),
-//                        rs.getString("account_name"),
-//                        rs.getString("account_password"),
-//                        rs.getString("role"),
-//                        rs.getInt("employee_id")
-//                ));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return employeeAccounts;
-//    }
 }

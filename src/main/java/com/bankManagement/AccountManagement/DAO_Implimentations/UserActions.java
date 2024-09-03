@@ -5,17 +5,26 @@ import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.Database.MySql;
 import org.jetbrains.annotations.Nullable;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserActions implements UserDAO {
     @Override
     public void addUser(User user) {
-
+        try (Connection connection = MySql.getConnection()) {
+            String query = "INSERT INTO users (idnp, firstname, lastname, "
+                    + "birthday, balance) VALUES (?,?,?,?,?)";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, user.getIdnp());
+            stmt.setString(2, user.getFirstname());
+            stmt.setString(3, user.getLastname());
+            stmt.setDate(4, Date.valueOf(user.getDateOfBirth()));
+            stmt.setDouble(5, user.getBalance());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -34,8 +43,15 @@ public class UserActions implements UserDAO {
     }
 
     @Override
-    public void deleteUser(int id) {
-
+    public void deleteUser(User user) {
+        try (Connection connection = MySql.getConnection()) {
+            String query = "DELETE FROM users WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, user.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

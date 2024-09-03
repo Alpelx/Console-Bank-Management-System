@@ -8,4 +8,8 @@ public interface UserAccountDAO {
     void updateUserAccount(UserAccount userAccount);
 
     void deleteUserAccount(UserAccount userAccount);
+
+    UserAccount getUserAccount(int user_id);
+
+    UserAccount getUserAccount(String login, String password);
 }

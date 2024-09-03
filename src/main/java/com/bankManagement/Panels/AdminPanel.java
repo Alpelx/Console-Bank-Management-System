@@ -13,8 +13,12 @@ import com.bankManagement.AccountManagement.DAO_Implimentations.UserAccountActio
 import com.bankManagement.AccountManagement.DAO_Implimentations.UserActions;
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.AccountManagement.DAO_Models.User;
+import com.bankManagement.AccountManagement.Removing;
+import com.bankManagement.Features.ConsoleReading;
 import com.bankManagement.Features.ConsoleTextColors;
+import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class AdminPanel extends Menu {
@@ -56,6 +60,18 @@ public class AdminPanel extends Menu {
             case 2:
                 displayEmployees();
                 break;
+            case 3:
+                addUser();
+                break;
+            case 4:
+                hireEmployee();
+                break;
+            case 5:
+                removeUser();
+                break;
+            case 6:
+                removeEmployee();
+                break;
             case 0:
                 System.out.println(ConsoleTextColors.RED_BOLD
                         + "You have closed the admin panel"
@@ -85,5 +101,81 @@ public class AdminPanel extends Menu {
         for (Employee employee : employees) {
             System.out.println(employee);
         }
+    }
+
+    private void addUser() {
+        User user = createUser();
+        userActions.addUser(user);
+    }
+
+    private User createUser() {
+        String idnp = readIdnp();
+        String firstname = ConsoleReading.readString("Enter first name: ");
+        String lastname = ConsoleReading.readString("Enter last name: ");
+        LocalDate dateOfBirth = ConsoleReading.readLocalDate();
+        double balance = ConsoleReading.readInt("Enter balance: ");
+
+        return new User(idnp, firstname, lastname, dateOfBirth, balance);
+    }
+
+    private void hireEmployee() {
+        Employee employee = createEmployee();
+        employeeActions.addEmployee(employee);
+    }
+
+    private Employee createEmployee() {
+        String idnp = readIdnp();
+        String firstname = ConsoleReading.readString("Enter firstname: ");
+        String lastname = ConsoleReading.readString("Enter lastname: ");
+        LocalDate dateOfBirth = ConsoleReading.readLocalDate();
+        String functionAtWork = ConsoleReading
+                .readString("Enter function at work (use '\\'' "
+                        + "instead of space): ");
+        int workExperience = ConsoleReading
+                .readInt("Enter work experience: ");
+
+        return new Employee(idnp, firstname, lastname, dateOfBirth,
+                functionAtWork.replace("\\", " "),
+                workExperience);
+    }
+
+    private @NotNull String readIdnp() {
+        String idnp;
+        do {
+            idnp = ConsoleReading.readString("Enter idnp: ");
+        } while (!isValidIdnp(idnp));
+        return idnp;
+    }
+
+    private boolean isValidIdnp(String idnp) {
+        return idnp.length() == 13 && idnp.matches("[0-9]{13}");
+    }
+
+    private void removeUser() {
+        String firstname = ConsoleReading.readString("Enter first name: ");
+        String lastname = ConsoleReading.readString("Enter last name: ");
+        User user = userActions.getUser(firstname, lastname);
+        if (user != null) {
+            Removing.removeUser(user);
+        } else {
+            displayErrorMessage();
+        }
+    }
+
+    private void removeEmployee() {
+        String firstname = ConsoleReading.readString("Enter first name: ");
+        String lastname = ConsoleReading.readString("Enter last name: ");
+        Employee employee = employeeActions.getEmployee(firstname, lastname);
+        if (employee != null) {
+            Removing.removeEmployee(employee);
+        } else {
+            displayErrorMessage();
+        }
+    }
+
+    private static void displayErrorMessage() {
+        System.out.println(ConsoleTextColors.RED_BOLD
+                + "Error [ wrong login or password ] \n\n"
+                + ConsoleTextColors.RESET);
     }
 }

@@ -30,6 +30,15 @@ public class User {
         this.hasAccount = hasAccount;
     }
 
+    public User(String idnp, String firstname, String lastname,
+                LocalDate dateOfBirth, double balance) {
+        this.idnp = idnp;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.dateOfBirth = dateOfBirth;
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter dateTimeFormatter =

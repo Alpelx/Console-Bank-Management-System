@@ -37,6 +37,17 @@ public class Employee {
         this.has_account = has_account;
     }
 
+    public Employee(String idnp, String firstname, String lastname,
+                    LocalDate dateOfBirth, String functionAtWork,
+                    int workExperience) {
+        this.idnp = idnp;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.dateOfBirth = dateOfBirth;
+        this.functionAtWork = functionAtWork;
+        this.workExperience = workExperience;
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter dateTimeFormatter =

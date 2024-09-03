@@ -7,6 +7,7 @@ package com.bankManagement.Panels;
 
 
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
+import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.Login;
 import com.bankManagement.Features.ConsoleReading;
 import com.bankManagement.Features.ConsoleTextColors;
@@ -33,6 +34,9 @@ public class BankLauncher extends Menu {
             case 2:
                 logInAsAdmin();
                 break;
+            case 3:
+                logInAsUser();
+                break;
             case 4:
                 RegisterPanel registerPanel = new RegisterPanel();
                 registerPanel.run();
@@ -52,6 +56,18 @@ public class BankLauncher extends Menu {
                 break;
         }
         return true;
+    }
+
+    private void logInAsUser() {
+        User user = Login.logInAsUser(
+                ConsoleReading.readString("Enter login: "),
+                ConsoleReading.readString("Enter password: ")
+        );
+        if (user != null) {
+            System.out.println(ConsoleTextColors.YELLOW
+                    + "You are logged in successfully"
+                    + ConsoleTextColors.RESET);
+        }
     }
 
     private void logInAsEmployee() {

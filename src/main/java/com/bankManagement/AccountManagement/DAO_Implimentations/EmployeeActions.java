@@ -5,16 +5,28 @@ import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.Database.MySql;
 import org.jetbrains.annotations.Nullable;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeActions implements EmployeeDAO {
     @Override
     public void addEmployee(Employee employee) {
+        try (Connection connection = MySql.getConnection()) {
+            String query = "INSERT INTO employees (idnp, firstname, "
+                    + "lastname, birthday, function_at_work, "
+                    + "work_experience) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, employee.getIdnp());
+            stmt.setString(2, employee.getFirstname());
+            stmt.setString(3, employee.getLastname());
+            stmt.setDate(4, Date.valueOf(employee.getDateOfBirth()));
+            stmt.setString(5, employee.getFunctionAtWork());
+            stmt.setInt(6, employee.getWorkExperience());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
