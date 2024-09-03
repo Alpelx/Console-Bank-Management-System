@@ -12,8 +12,6 @@ import com.bankManagement.Features.ConsoleReading;
 import com.bankManagement.Features.ConsoleTextColors;
 
 public class BankLauncher extends Menu {
-    AdminPanel adminPanel = new AdminPanel();
-
     @Override
     protected void showMenuList() {
         System.out.println(ConsoleTextColors.PURPLE_BOLD
@@ -31,6 +29,9 @@ public class BankLauncher extends Menu {
         switch (choice) {
             case 1:
                 logInAsEmployee();
+                break;
+            case 2:
+                logInAsAdmin();
                 break;
             case 4:
                 RegisterPanel registerPanel = new RegisterPanel();
@@ -53,15 +54,27 @@ public class BankLauncher extends Menu {
         return true;
     }
 
-    private static void logInAsEmployee() {
+    private void logInAsEmployee() {
         Employee employee = Login.logInAsEmployee(
-                ConsoleReading.readLogin(),
-                ConsoleReading.readPassword()
+                ConsoleReading.readString("Enter login: "),
+                ConsoleReading.readString("Enter password: ")
         );
         if (employee != null) {
             EmployeePanel employeePanel =
                     new EmployeePanel(employee);
             employeePanel.run();
+        }
+    }
+
+    private void logInAsAdmin() {
+        Employee admin = Login.logInAsAdmin(
+                ConsoleReading.readString("Enter login: "),
+                ConsoleReading.readString("Enter password: ")
+        );
+        if (admin != null) {
+            AdminPanel adminPanel =
+                    new AdminPanel();
+            adminPanel.run();
         }
     }
 }

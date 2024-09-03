@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public abstract class MySql {
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/bank_system" ,
+                "jdbc:mysql://localhost:3306/bank_system",
                 "root",
                 "linella1922"
         );

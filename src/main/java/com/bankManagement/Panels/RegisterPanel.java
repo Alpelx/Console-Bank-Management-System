@@ -6,10 +6,11 @@ package com.bankManagement.Panels;
  * account allowed.
  */
 
+import com.bankManagement.AccountManagement.AccountType;
 import com.bankManagement.AccountManagement.Registration;
 import com.bankManagement.Features.ConsoleTextColors;
 
-public class RegisterPanel extends Menu{
+public class RegisterPanel extends Menu {
     @Override
     protected void showMenuList() {
         System.out.println(ConsoleTextColors.YELLOW_BOLD
@@ -23,7 +24,10 @@ public class RegisterPanel extends Menu{
     protected boolean executeChoice(int choice) {
         switch (choice) {
             case 1:
-                Registration.registerEmployee();
+                Registration.registerAccount(AccountType.employee);
+                break;
+            case 2:
+                Registration.registerAccount(AccountType.user);
                 break;
             case 0:
                 System.out.println(ConsoleTextColors.RED_BOLD +

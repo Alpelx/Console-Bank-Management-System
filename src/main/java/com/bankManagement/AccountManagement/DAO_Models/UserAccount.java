@@ -18,4 +18,10 @@ public class UserAccount {
         this.password = password;
         this.userId = userId;
     }
+
+    public UserAccount(String username, String password, int userId) {
+        this.username = username;
+        this.password = password;
+        this.userId = userId;
+    }
 }

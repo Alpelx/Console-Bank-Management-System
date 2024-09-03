@@ -7,13 +7,33 @@ package com.bankManagement.Panels;
  * being unable to be called by other classes.
  */
 
+import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeAccountActions;
+import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeActions;
+import com.bankManagement.AccountManagement.DAO_Implimentations.UserAccountActions;
+import com.bankManagement.AccountManagement.DAO_Implimentations.UserActions;
+import com.bankManagement.AccountManagement.DAO_Models.Employee;
+import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.Features.ConsoleTextColors;
 
+import java.util.List;
+
 public class AdminPanel extends Menu {
+    private EmployeeAccountActions employeeAccountActions;
+    private EmployeeActions employeeActions;
+    private UserAccountActions userAccountActions;
+    private UserActions userActions;
+
+    public AdminPanel() {
+        this.employeeAccountActions = new EmployeeAccountActions();
+        this.employeeActions = new EmployeeActions();
+        this.userAccountActions = new UserAccountActions();
+        this.userActions = new UserActions();
+    }
+
     @Override
     protected void showMenuList() {
         System.out.println(ConsoleTextColors.CYAN_BOLD
-                + "Admin Panel\n" + ConsoleTextColors.RESET
+                + "\n\nAdmin Panel\n" + ConsoleTextColors.RESET
                 + "[1] -> Display data about users\n"
                 + "[2] -> Display data about employees\n"
                 + "[3] -> Register an user\n"
@@ -30,14 +50,19 @@ public class AdminPanel extends Menu {
     @Override
     protected boolean executeChoice(int choice) {
         switch (choice) {
-
+            case 1:
+                displayUsers();
+                break;
+            case 2:
+                displayEmployees();
+                break;
             case 0:
                 System.out.println(ConsoleTextColors.RED_BOLD
                         + "You have closed the admin panel"
                         + ConsoleTextColors.RESET + "\n\n");
                 return false;
             case -1:
-                return true;
+                break;
             default:
                 System.out.println(ConsoleTextColors.RED_BOLD
                         + "Error [ Wrong input ]"
@@ -48,4 +73,17 @@ public class AdminPanel extends Menu {
         return true;
     }
 
+    private void displayUsers() {
+        List<User> users = userActions.getAllUsers();
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    private void displayEmployees() {
+        List<Employee> employees = employeeActions.getAllEmployees();
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+    }
 }

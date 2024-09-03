@@ -1,30 +1,48 @@
 package com.bankManagement.AccountManagement.DAO_Models;
 
+import com.bankManagement.Features.ConsoleTextColors;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
 public class User {
     private int id;
     private String idnp;
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private LocalDate dateOfBirth;
     private double balance;
-    private boolean has_account;
+    private boolean hasAccount;
 
-    public User(int id, String idnp, String firstName, String lastName,
+    public User(int id, String idnp, String firstname, String lastname,
                 LocalDate dateOfBirth, double balance,
-                boolean has_account) {
+                boolean hasAccount) {
         this.id = id;
         this.idnp = idnp;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
         this.balance = balance;
-        this.has_account = has_account;
+        this.hasAccount = hasAccount;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter dateTimeFormatter =
+                DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return ConsoleTextColors.BLUE_BOLD + "My data:"
+                + ConsoleTextColors.BLUE
+                + "\nId: " + id
+                + "\nIdnp: " + idnp
+                + "\nFirstname: " + firstname
+                + "\nLastname: " + lastname
+                + "\nDate of birth: " + dateOfBirth.format(dateTimeFormatter)
+                + "\nBalance: " + balance
+                + "\nHas account: " + hasAccount + "\n\n" +
+                ConsoleTextColors.RESET;
     }
 }

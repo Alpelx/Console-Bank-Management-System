@@ -9,9 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeDAOImpl implements EmployeeDAO {
+public class EmployeeActions implements EmployeeDAO {
     @Override
     public void addEmployee(Employee employee) {
     }
@@ -71,8 +72,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public @Nullable Employee getEmployeeByName(String firstname,
-                                                String lastname) {
+    public @Nullable Employee getEmployee(String firstname,
+                                          String lastname) {
         try (Connection connection = MySql.getConnection()) {
             String query = "SELECT *, COUNT(*) AS Count FROM employees "
                     + "WHERE firstname = ? AND lastname = ?"
@@ -114,7 +115,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> getAllEmployees() {
-//        return List.of();
-        return null;
+        List<Employee> employees = new ArrayList<>();
+        try (Connection connection = MySql.getConnection()) {
+            String query = "SELECT * FROM employees";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                employees.add(getEmployeeById(rs.getInt("id")));
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return employees;
     }
 }

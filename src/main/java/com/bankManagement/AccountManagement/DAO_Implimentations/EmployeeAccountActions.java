@@ -9,12 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
 
-public class EmployeeAccountDAOImpl implements EmployeeAccountDAO {
+public class EmployeeAccountActions implements EmployeeAccountDAO {
     @Override
-    public @Nullable EmployeeAccount getEmployeeAccountByLogin(String login,
-                                                               String password) {
+    public @Nullable EmployeeAccount getEmployeeAccount(String login,
+                                                        String password) {
         try (Connection connection = MySql.getConnection()) {
             String query = "SELECT *, COUNT(*) AS Count "
                     + "FROM employee_accounts "
@@ -40,7 +39,7 @@ public class EmployeeAccountDAOImpl implements EmployeeAccountDAO {
     }
 
     @Override
-    public @Nullable EmployeeAccount getEmployeeAccountByEmployeeId(int employeeId) {
+    public @Nullable EmployeeAccount getEmployeeAccount(int employeeId) {
         try (Connection connection = MySql.getConnection()) {
             String query = "SELECT *, COUNT(*) AS Count "
                     + "FROM employee_accounts "
@@ -90,11 +89,6 @@ public class EmployeeAccountDAOImpl implements EmployeeAccountDAO {
     }
 
     @Override
-    public void updateEmployeeAccount(EmployeeAccount employeeAccount) {
-
-    }
-
-    @Override
     public void deleteEmployeeAccount(EmployeeAccount employeeAccount) {
         String query = "DELETE FROM employee_accounts WHERE "
                 + "employee_id = ?";
@@ -107,25 +101,25 @@ public class EmployeeAccountDAOImpl implements EmployeeAccountDAO {
         }
     }
 
-    @Override
-    public LinkedList<EmployeeAccount> getAllEmployeeAccounts() {
-        LinkedList<EmployeeAccount> employeeAccounts = new LinkedList<>();
-        String query = "SELECT * FROM employee_accounts";
-        try (Connection connection = MySql.getConnection()) {
-            PreparedStatement stmt = connection.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                employeeAccounts.add(new EmployeeAccount(
-                        rs.getInt("id"),
-                        rs.getString("account_name"),
-                        rs.getString("account_password"),
-                        rs.getString("role"),
-                        rs.getInt("employee_id")
-                ));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return employeeAccounts;
-    }
+//    @Override
+//    public LinkedList<EmployeeAccount> getAllEmployeeAccounts() {
+//        LinkedList<EmployeeAccount> employeeAccounts = new LinkedList<>();
+//        String query = "SELECT * FROM employee_accounts";
+//        try (Connection connection = MySql.getConnection()) {
+//            PreparedStatement stmt = connection.prepareStatement(query);
+//            ResultSet rs = stmt.executeQuery();
+//            while (rs.next()) {
+//                employeeAccounts.add(new EmployeeAccount(
+//                        rs.getInt("id"),
+//                        rs.getString("account_name"),
+//                        rs.getString("account_password"),
+//                        rs.getString("role"),
+//                        rs.getInt("employee_id")
+//                ));
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return employeeAccounts;
+//    }
 }

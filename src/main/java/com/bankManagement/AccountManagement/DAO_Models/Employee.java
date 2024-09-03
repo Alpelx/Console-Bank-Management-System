@@ -5,7 +5,6 @@ package com.bankManagement.AccountManagement.DAO_Models;
  * easier managing his data and operations through the java program
  */
 
-import com.bankManagement.Features.ConsoleReading;
 import com.bankManagement.Features.ConsoleTextColors;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,12 +42,15 @@ public class Employee {
         DateTimeFormatter dateTimeFormatter =
                 DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return ConsoleTextColors.BLUE_BOLD + "\nMy Data: "
-                + ConsoleTextColors.BLUE + "\nId: " + id + "\nIdnp: "
-                + idnp + "\nFirstname: " + firstname + "\nLastname: "
-                + lastname + "\nDate of birth: "
-                + dateOfBirth.format(dateTimeFormatter)
+                + ConsoleTextColors.BLUE
+                + "\nId: " + id
+                + "\nIdnp: " + idnp
+                + "\nFirstname: " + firstname
+                + "\nLastname: " + lastname +
+                "\nDate of birth: " + dateOfBirth.format(dateTimeFormatter)
                 + "\nFunction at work: " + functionAtWork
-                + "\nWork Experience: " + workExperience + "\n\n"
+                + "\nWork experience: " + workExperience
+                + "\nHas account: " + has_account
                 + ConsoleTextColors.RESET;
     }
 }

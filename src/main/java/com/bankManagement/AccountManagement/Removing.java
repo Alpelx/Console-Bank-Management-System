@@ -1,7 +1,7 @@
 package com.bankManagement.AccountManagement;
 
-import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeAccountDAOImpl;
-import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeDAOImpl;
+import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeAccountActions;
+import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeActions;
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.AccountManagement.DAO_Models.EmployeeAccount;
 import com.bankManagement.Features.ConsoleTextColors;
@@ -13,11 +13,11 @@ import com.bankManagement.Features.ConsoleTextColors;
 public class Removing {
     public static void dismissEmployee(Employee employee) {
         try {
-            EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-            EmployeeAccountDAOImpl employeeAccountDAO
-                    = new EmployeeAccountDAOImpl();
+            EmployeeActions employeeDAO = new EmployeeActions();
+            EmployeeAccountActions employeeAccountDAO
+                    = new EmployeeAccountActions();
             EmployeeAccount employeeAccount = employeeAccountDAO
-                    .getEmployeeAccountByEmployeeId(employee.getId());
+                    .getEmployeeAccount(employee.getId());
             employeeAccountDAO.deleteEmployeeAccount(employeeAccount);
             employeeDAO.deleteEmployee(employee);
         } catch (NullPointerException e) {
