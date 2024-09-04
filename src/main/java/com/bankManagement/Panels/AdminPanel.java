@@ -7,12 +7,10 @@ package com.bankManagement.Panels;
  * being unable to be called by other classes.
  */
 
-import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeAccountActions;
-import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeActions;
-import com.bankManagement.AccountManagement.DAO_Implimentations.UserAccountActions;
-import com.bankManagement.AccountManagement.DAO_Implimentations.UserActions;
+import com.bankManagement.AccountManagement.DAO_Implimentations.*;
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.AccountManagement.DAO_Models.EmployeeAccount;
+import com.bankManagement.AccountManagement.DAO_Models.Transaction;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.Removing;
 import com.bankManagement.Features.ConsoleReading;
@@ -25,14 +23,14 @@ import java.util.List;
 public class AdminPanel extends Menu {
     private EmployeeAccountActions employeeAccountActions;
     private EmployeeActions employeeActions;
-    private UserAccountActions userAccountActions;
     private UserActions userActions;
+    private TransactionActions transactionActions;
 
     public AdminPanel() {
         this.employeeAccountActions = new EmployeeAccountActions();
         this.employeeActions = new EmployeeActions();
-        this.userAccountActions = new UserAccountActions();
         this.userActions = new UserActions();
+        transactionActions = new TransactionActions();
     }
 
     @Override
@@ -78,6 +76,12 @@ public class AdminPanel extends Menu {
                 break;
             case 8:
                 revokeAdmin();
+                break;
+            case 9:
+                displayAllTransactions();
+                break;
+            case 10:
+                displayUserTransactions();
                 break;
             case 0:
                 System.out.println(ConsoleTextColors.RED_BOLD
@@ -222,6 +226,41 @@ public class AdminPanel extends Menu {
             }
         }
 
+    }
+
+    private void displayAllTransactions() {
+        List<Transaction> transactions = transactionActions
+                .getAllTransactions();
+        if (transactions.isEmpty()) {
+            System.out.println(ConsoleTextColors.RED_BOLD
+                    + "Error [ no transactions found ]"
+                    + ConsoleTextColors.RESET);
+        } else {
+            for (Transaction transaction : transactions) {
+                System.out.println(transaction);
+            }
+        }
+    }
+
+    private void displayUserTransactions() {
+        String firstname = ConsoleReading.readString("Enter first name: ");
+        String lastname = ConsoleReading.readString("Enter last name: ");
+        User user = userActions.getUser(firstname, lastname);
+        if (user == null) {
+            displayErrorMessage();
+        } else {
+            List<Transaction> transactions = transactionActions
+                    .getTransactionsByAccountId(user.getId());
+            if (transactions.isEmpty()) {
+                System.out.println(ConsoleTextColors.RED_BOLD
+                        + "Error [ no transactions found ]"
+                        + ConsoleTextColors.RESET);
+            } else {
+                for (Transaction transaction : transactions) {
+                    System.out.println(transaction);
+                }
+            }
+        }
     }
 
     private void displayErrorMessage() {

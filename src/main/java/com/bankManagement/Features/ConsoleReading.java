@@ -26,6 +26,12 @@ public abstract class ConsoleReading {
         return SCANNER.nextInt();
     }
 
+    public static double readDouble(String x) {
+        System.out.print(ConsoleTextColors.GREEN_BOLD + x
+                + ConsoleTextColors.RESET);
+        return SCANNER.nextDouble();
+    }
+
     public static @NotNull LocalDate readLocalDate() {
         LocalDate dateOfBirth;
         while (true) {
