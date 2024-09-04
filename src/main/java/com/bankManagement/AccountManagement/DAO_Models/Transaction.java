@@ -42,6 +42,6 @@ public class Transaction {
                 + "Amount -> " + amount + "\n"
                 + "Date -> " + date.format(formatter) + "\n"
                 + "Type -> " + type + "\n"
-                + "User -> " + userId + "\n\n";
+                + "User id -> " + userId + "\n\n";
     }
 }

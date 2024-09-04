@@ -6,7 +6,7 @@ package com.bankManagement.Panels;
  * account allowed.
  */
 
-import com.bankManagement.AccountManagement.AccountType;
+import com.bankManagement.Sources.AccountType;
 import com.bankManagement.AccountManagement.Registration;
 import com.bankManagement.Features.ConsoleTextColors;
 

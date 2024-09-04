@@ -1,4 +1,4 @@
-package com.bankManagement.AccountManagement;
+package com.bankManagement.Sources;
 
 public enum AccountType {
     user, employee

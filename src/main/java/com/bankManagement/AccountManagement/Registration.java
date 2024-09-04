@@ -10,6 +10,7 @@ import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.DAO_Models.UserAccount;
 import com.bankManagement.Features.ConsoleReading;
 import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Sources.AccountType;
 
 /**
  * @Description this is the class where is performed account registration

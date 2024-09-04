@@ -5,17 +5,17 @@ import com.bankManagement.AccountManagement.DAO_Models.Transaction;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.Database.MySql;
 import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Sources.UserOperationTypes;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionActions implements TransactionDAO {
     @Override
-    public Transaction deposit(double amount, User user) {
+    public Transaction execTransaction(double amount, User user,
+                                       UserOperationTypes operationType) {
         try (Connection connection = MySql.getConnection()) {
             connection.setAutoCommit(false);
             Savepoint savepoint = connection.setSavepoint();
@@ -26,7 +26,7 @@ public class TransactionActions implements TransactionDAO {
                 return new Transaction(
                         amount,
                         LocalDateTime.now(),
-                        "deposit",
+                        operationType.toString(),
                         user.getId()
                 );
             } catch (SQLException e) {
@@ -40,28 +40,14 @@ public class TransactionActions implements TransactionDAO {
     }
 
     @Override
-    public Transaction withdraw(double amount, int userId) {
-
-
-        return null;
-    }
-
-    @Override
-    public Transaction transfer(double amount, int senderId, int receiverId) {
-
-
-        return null;
-    }
-
-    @Override
-    public void addTransaction(Transaction transaction) {
+    public void addTransactionToHistory(Transaction transaction) {
         try (Connection connection = MySql.getConnection()) {
             String query = "INSERT INTO transactions_history "
                     + "(amount, transaction_date, type, user_id) "
                     + "VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setDouble(1, transaction.getAmount());
-            stmt.setDate(2, Date.valueOf(LocalDate.now()));
+            stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
             stmt.setString(3, transaction.getType());
             stmt.setInt(4, transaction.getUserId());
             stmt.execute();
