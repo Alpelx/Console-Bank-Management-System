@@ -85,11 +85,6 @@ public class UserAccountActions implements UserAccountDAO {
     }
 
     @Override
-    public void updateUserAccount(UserAccount userAccount) {
-
-    }
-
-    @Override
     public void deleteUserAccount(UserAccount userAccount) {
         String query = "DELETE FROM user_accounts WHERE "
                 + "user_id = ?";

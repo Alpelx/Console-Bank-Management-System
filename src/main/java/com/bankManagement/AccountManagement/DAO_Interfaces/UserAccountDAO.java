@@ -5,8 +5,6 @@ import com.bankManagement.AccountManagement.DAO_Models.UserAccount;
 public interface UserAccountDAO {
     void addUserAccount(UserAccount userAccount);
 
-    void updateUserAccount(UserAccount userAccount);
-
     void deleteUserAccount(UserAccount userAccount);
 
     UserAccount getUserAccount(int user_id);

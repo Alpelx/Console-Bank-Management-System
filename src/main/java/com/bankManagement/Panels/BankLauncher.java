@@ -64,9 +64,8 @@ public class BankLauncher extends Menu {
                 ConsoleReading.readString("Enter password: ")
         );
         if (user != null) {
-            System.out.println(ConsoleTextColors.YELLOW
-                    + "You are logged in successfully"
-                    + ConsoleTextColors.RESET);
+            UserPanel userPanel = new UserPanel(user);
+            userPanel.run();
         }
     }
 

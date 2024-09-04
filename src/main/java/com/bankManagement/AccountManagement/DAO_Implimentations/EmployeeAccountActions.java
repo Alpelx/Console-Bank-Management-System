@@ -100,4 +100,18 @@ public class EmployeeAccountActions implements EmployeeAccountDAO {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void updateAccount(EmployeeAccount employeeAccount) {
+        try (Connection connection = MySql.getConnection()) {
+            String query = "UPDATE employee_accounts SET role = ?"
+                    + "WHERE employee_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, employeeAccount.getRole());
+            stmt.setInt(2, employeeAccount.getEmployeeId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

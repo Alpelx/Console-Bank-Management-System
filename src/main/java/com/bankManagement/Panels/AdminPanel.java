@@ -12,6 +12,7 @@ import com.bankManagement.AccountManagement.DAO_Implimentations.EmployeeActions;
 import com.bankManagement.AccountManagement.DAO_Implimentations.UserAccountActions;
 import com.bankManagement.AccountManagement.DAO_Implimentations.UserActions;
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
+import com.bankManagement.AccountManagement.DAO_Models.EmployeeAccount;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.Removing;
 import com.bankManagement.Features.ConsoleReading;
@@ -71,6 +72,12 @@ public class AdminPanel extends Menu {
                 break;
             case 6:
                 removeEmployee();
+                break;
+            case 7:
+                grantAdmin();
+                break;
+            case 8:
+                revokeAdmin();
                 break;
             case 0:
                 System.out.println(ConsoleTextColors.RED_BOLD
@@ -173,7 +180,51 @@ public class AdminPanel extends Menu {
         }
     }
 
-    private static void displayErrorMessage() {
+    private void grantAdmin() {
+        Employee employee = employeeActions.getEmployee(
+                ConsoleReading.readString("Enter first name: "),
+                ConsoleReading.readString("Enter last name: ")
+        );
+        if (employee == null) {
+            displayErrorMessage();
+        } else {
+            EmployeeAccount employeeAccount = employeeAccountActions
+                    .getEmployeeAccount(employee.getId());
+            if (employeeAccount == null) {
+                System.out.println(ConsoleTextColors.RED_BOLD
+                        + "Employee does not have account"
+                        + ConsoleTextColors.RESET);
+            } else {
+                employeeAccount.setRole("administrator");
+                employeeAccountActions.updateAccount(employeeAccount);
+            }
+        }
+
+    }
+
+    private void revokeAdmin() {
+        Employee employee = employeeActions.getEmployee(
+                ConsoleReading.readString("Enter first name: "),
+                ConsoleReading.readString("Enter last name: ")
+        );
+        if (employee == null) {
+            displayErrorMessage();
+        } else {
+            EmployeeAccount employeeAccount = employeeAccountActions
+                    .getEmployeeAccount(employee.getId());
+            if (employeeAccount == null) {
+                System.out.println(ConsoleTextColors.RED_BOLD
+                        + "Employee does not have account"
+                        + ConsoleTextColors.RESET);
+            } else {
+                employeeAccount.setRole("regular");
+                employeeAccountActions.updateAccount(employeeAccount);
+            }
+        }
+
+    }
+
+    private void displayErrorMessage() {
         System.out.println(ConsoleTextColors.RED_BOLD
                 + "Error [ wrong login or password ] \n\n"
                 + ConsoleTextColors.RESET);

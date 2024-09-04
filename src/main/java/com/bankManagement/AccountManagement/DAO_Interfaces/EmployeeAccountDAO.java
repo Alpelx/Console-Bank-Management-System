@@ -11,4 +11,5 @@ public interface EmployeeAccountDAO {
 
     void deleteEmployeeAccount(EmployeeAccount employeeAccount);
 
+    void updateAccount(EmployeeAccount employeeAccount);
 }
