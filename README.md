@@ -1,4 +1,4 @@
-Bank Management System using JDBC
+**Bank Management System using JDBC**
 
 This is a console Java application used for maintaining banking operations through a console interface in the most simplified and effective ways.
 Major motivation for this project was to understand the implementation aspects of JDBC, in short, Java Database Connectivity, connecting to the database. 
