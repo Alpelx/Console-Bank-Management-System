@@ -15,6 +15,6 @@ public class App {
         BankLauncher bankLauncher = new BankLauncher();
         bankLauncher.run();
 
-        //Check merge
+        //Check merge fsadfasdfasdf
     }
 }
