@@ -1,5 +1,12 @@
 package com.bankManagement.AccountManagement.DAO_Implimentations;
 
+/**
+ * @Description: this is the class which execute some operations over
+ * employee account like getting employee by id or first name, updating
+ * account data and others. Here is working with sql queries and executing
+ * some
+ */
+
 import com.bankManagement.AccountManagement.DAO_Interfaces.EmployeeAccountDAO;
 import com.bankManagement.AccountManagement.DAO_Models.EmployeeAccount;
 import com.bankManagement.Database.MySql;

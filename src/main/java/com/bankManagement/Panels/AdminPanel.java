@@ -102,16 +102,12 @@ public class AdminPanel extends Menu {
 
     private void displayUsers() {
         List<User> users = userActions.getAllUsers();
-        for (User user : users) {
-            System.out.println(user);
-        }
+        users.forEach(System.out::println);
     }
 
     private void displayEmployees() {
         List<Employee> employees = employeeActions.getAllEmployees();
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
+        employees.forEach(System.out::println);
     }
 
     private void addUser() {
@@ -235,11 +231,9 @@ public class AdminPanel extends Menu {
             System.out.println(ConsoleTextColors.RED_BOLD
                     + "Error [ no transactions found ]"
                     + ConsoleTextColors.RESET);
-        } else {
-            for (Transaction transaction : transactions) {
-                System.out.println(transaction);
-            }
+            return;
         }
+        transactions.forEach(System.out::println);
     }
 
     private void displayUserTransactions() {
@@ -255,11 +249,9 @@ public class AdminPanel extends Menu {
                 System.out.println(ConsoleTextColors.RED_BOLD
                         + "Error [ no transactions found ]"
                         + ConsoleTextColors.RESET);
-            } else {
-                for (Transaction transaction : transactions) {
-                    System.out.println(transaction);
-                }
+                return;
             }
+            transactions.forEach(System.out::println);
         }
     }
 

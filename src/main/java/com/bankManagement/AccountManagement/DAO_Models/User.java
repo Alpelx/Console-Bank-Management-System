@@ -18,6 +18,10 @@ public class User {
     private double balance;
     private boolean hasAccount;
 
+    public String getFirstname() {
+        return firstname + "fsfsdgsdf";
+    }
+
     public User(int id, String idnp, String firstname, String lastname,
                 LocalDate dateOfBirth, double balance,
                 boolean hasAccount) {
