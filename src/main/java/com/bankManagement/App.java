@@ -14,5 +14,7 @@ public class App {
     public static void main(String[] args) {
         BankLauncher bankLauncher = new BankLauncher();
         bankLauncher.run();
+
+        //Check merge
     }
 }
