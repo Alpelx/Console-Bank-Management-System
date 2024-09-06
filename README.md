@@ -16,5 +16,5 @@ Due to the use of the DAO Pattern, database interaction is separated out, which 
 this pattern is that it allows changing or further extending this system with ease later.
 
 This project shows my ability to do database-driven application development but also shows how well 
-I understand clean and well-structured code architecture.
+I understand clean and well-structured code architecture. 
 
