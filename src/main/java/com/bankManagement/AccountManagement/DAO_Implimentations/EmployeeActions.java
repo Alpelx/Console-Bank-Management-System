@@ -43,7 +43,8 @@ public class EmployeeActions implements EmployeeDAO {
         try (Connection connection = MySql.getConnection()) {
             String query = "INSERT INTO employees (idnp, firstname, "
                     + "lastname, birthday, function_at_work, "
-                    + "work_experience) VALUES (?, ?, ?, ?, ?, ?)";
+                    + "work_experience, has_account) VALUES (?, ?, ?, ?, ?, ?,"
+                    + "DEFAULT)";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, employee.getIdnp());
             stmt.setString(2, employee.getFirstname());

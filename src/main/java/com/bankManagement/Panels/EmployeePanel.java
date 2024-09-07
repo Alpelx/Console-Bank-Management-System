@@ -36,6 +36,9 @@ public class EmployeePanel extends Menu {
                 break;
             case 2:
                 Removing.removeEmployee(employee);
+                System.out.println(ConsoleTextColors.GREEN_BOLD
+                        + "Employee removed successfully"
+                        + ConsoleTextColors.RESET);
                 return false;
             case 0:
                 System.out.println(ConsoleTextColors.RED_BOLD

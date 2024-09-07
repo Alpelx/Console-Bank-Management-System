@@ -47,8 +47,8 @@ public class AdminPanel extends Menu {
                 + "[6] -> Dismiss an employee\n"
                 + "[7] -> Grant admin to an employee\n"
                 + "[8] -> Revoke admin from an employee\n"
-                + "[9] -> Display an user's transaction history\n"
-                + "[10] -> Display whole transaction history"
+                + "[9] -> Display whole transaction history"
+                + "[10] -> Display an user's transaction history\n"
                 + ConsoleTextColors.RESET);
     }
 
@@ -105,11 +105,19 @@ public class AdminPanel extends Menu {
     private void displayUsers() {
         List<User> users = userActions.getAllUsers();
         users.forEach(System.out::println);
+        if (users.isEmpty()) {
+            System.out.println(ConsoleTextColors.RED_BOLD
+                    + "Error [ users not found ]");
+        }
     }
 
     private void displayEmployees() {
         List<Employee> employees = employeeActions.getAllEmployees();
         employees.forEach(System.out::println);
+        if (employees.isEmpty()) {
+            System.out.println(ConsoleTextColors.RED_BOLD
+                    + "Error [ employees not found ]");
+        }
     }
 
     private void addUser() {

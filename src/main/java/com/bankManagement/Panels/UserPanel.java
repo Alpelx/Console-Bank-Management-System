@@ -71,6 +71,9 @@ public class UserPanel extends Menu {
                 break;
             case 6:
                 removeAccount();
+                System.out.println(ConsoleTextColors.GREEN_BOLD
+                        + "Account removed successfully"
+                        + ConsoleTextColors.RESET);
                 return false;
             case 0:
                 System.out.println(ConsoleTextColors.RED_BOLD
@@ -102,6 +105,9 @@ public class UserPanel extends Menu {
                 user, userOperationType);
         if (transaction != null) {
             transactionActions.addTransactionToHistory(transaction);
+            System.out.println(ConsoleTextColors.GREEN_BOLD
+                    + "Transaction finished successfully"
+                    + ConsoleTextColors.RESET);
         } else {
             System.out.println(ConsoleTextColors.RED_BOLD
                     + "Error [ something went wrong ] " +
@@ -133,6 +139,9 @@ public class UserPanel extends Menu {
                 user, userOperationType);
         if (transaction != null) {
             transactionActions.addTransactionToHistory(transaction);
+            System.out.println(ConsoleTextColors.GREEN_BOLD
+                    + "Transaction finished successfully"
+                    + ConsoleTextColors.RESET);
         } else {
             System.out.println(ConsoleTextColors.RED_BOLD
                     + "Error [ something went wrong ] " +

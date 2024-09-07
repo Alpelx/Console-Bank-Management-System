@@ -38,7 +38,8 @@ public class UserActions implements UserDAO {
     public void addUser(User user) {
         try (Connection connection = MySql.getConnection()) {
             String query = "INSERT INTO users (idnp, firstname, lastname, "
-                    + "birthday, balance) VALUES (?,?,?,?,?)";
+                    + "birthday, balance, has_account) VALUES (?,?,?,?,?,"
+                    + "DEFAULT)";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, user.getIdnp());
             stmt.setString(2, user.getFirstname());

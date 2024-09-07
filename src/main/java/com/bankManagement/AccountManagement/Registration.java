@@ -29,7 +29,7 @@ public abstract class Registration {
                 registerEmployee(firstname, lastname);
                 break;
             case user:
-                RegisterUser(firstname, lastname);
+                registerUser(firstname, lastname);
                 break;
         }
     }
@@ -41,6 +41,7 @@ public abstract class Registration {
             employeeErrorMessage();
         } else {
             setEmployeeData(employee, employeeActions);
+            displaySuccessMessage();
         }
         return;
     }
@@ -64,13 +65,14 @@ public abstract class Registration {
         employeeActions.updateEmployee(employee);
     }
 
-    private static void RegisterUser(String firstname, String lastname) {
+    private static void registerUser(String firstname, String lastname) {
         UserActions userActions = new UserActions();
         User user = userActions.getUser(firstname, lastname);
         if (user == null || user.isAccount()) {
             userErrorMessage();
         } else {
             setUserData(user, userActions);
+            displaySuccessMessage();
         }
     }
 
@@ -88,5 +90,11 @@ public abstract class Registration {
         userAccountActions.addUserAccount(userAccount);
         user.setAccount(true);
         userActions.updateUser(user);
+    }
+
+    private static void displaySuccessMessage() {
+        System.out.println(ConsoleTextColors.GREEN_BOLD
+                + "Account registered successfully"
+                + ConsoleTextColors.RESET);
     }
 }

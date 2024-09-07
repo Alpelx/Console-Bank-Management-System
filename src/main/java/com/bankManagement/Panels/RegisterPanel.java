@@ -33,15 +33,15 @@ public class RegisterPanel extends Menu {
                 Registration.registerAccount(AccountType.user);
                 break;
             case 0:
-                System.out.println(ConsoleTextColors.RED_BOLD +
-                        "You have closed the register panel" +
-                        ConsoleTextColors.RESET + "\n\n");
+                System.out.println(ConsoleTextColors.RED_BOLD
+                        + "You have closed the register panel"
+                        + ConsoleTextColors.RESET + "\n\n");
                 return false;
             case -1:
                 return true;
             default:
-                System.out.println(ConsoleTextColors.RED_BOLD +
-                        "Error [ Wrong input ]" + ConsoleTextColors.RESET);
+                System.out.println(ConsoleTextColors.RED_BOLD
+                        + "Error [ Wrong input ]" + ConsoleTextColors.RESET);
                 System.out.println();
                 break;
         }
