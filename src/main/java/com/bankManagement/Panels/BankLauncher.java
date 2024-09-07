@@ -1,8 +1,12 @@
 package com.bankManagement.Panels;
 
 /**
- * @Description This is the main class of bank management
- * system. Here are called and used all main methods.
+ * @Description: This is class which is called on the running of
+ * application.Here are two functionalities: login (user, employee,
+ * admin) and registration (user, employee). There are no allowed
+ * registering as admin, because admin privileges can be granted only
+ * by other admins. The class does not interact directly with mySql,
+ * instead it works with DAO models and implementations.
  */
 
 
@@ -47,7 +51,7 @@ public class BankLauncher extends Menu {
                         + ConsoleTextColors.RESET);
                 return false;
             case -1:
-                return true;
+                break;
             default:
                 System.out.println(ConsoleTextColors.RED_BOLD
                         + "Error [ Wrong input ]"
@@ -61,8 +65,7 @@ public class BankLauncher extends Menu {
     private void logInAsUser() {
         User user = Login.logInAsUser(
                 ConsoleReading.readString("Enter login: "),
-                ConsoleReading.readString("Enter password: ")
-        );
+                ConsoleReading.readString("Enter password: "));
         if (user != null) {
             UserPanel userPanel = new UserPanel(user);
             userPanel.run();
@@ -72,11 +75,9 @@ public class BankLauncher extends Menu {
     private void logInAsEmployee() {
         Employee employee = Login.logInAsEmployee(
                 ConsoleReading.readString("Enter login: "),
-                ConsoleReading.readString("Enter password: ")
-        );
+                ConsoleReading.readString("Enter password: "));
         if (employee != null) {
-            EmployeePanel employeePanel =
-                    new EmployeePanel(employee);
+            EmployeePanel employeePanel = new EmployeePanel(employee);
             employeePanel.run();
         }
     }
@@ -84,11 +85,9 @@ public class BankLauncher extends Menu {
     private void logInAsAdmin() {
         Employee admin = Login.logInAsAdmin(
                 ConsoleReading.readString("Enter login: "),
-                ConsoleReading.readString("Enter password: ")
-        );
+                ConsoleReading.readString("Enter password: "));
         if (admin != null) {
-            AdminPanel adminPanel =
-                    new AdminPanel();
+            AdminPanel adminPanel = new AdminPanel();
             adminPanel.run();
         }
     }

@@ -12,9 +12,11 @@ import com.bankManagement.Features.ConsoleTextColors;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * @Description this is the class that performs the login process of
+ * @Description: this is the class that performs the login process of
  * any type of account, regardless of whether it is an employee, admin
- * or a simple user. This class provide login process for each of 'em
+ * or a simple user. This class provide login process for each of them.
+ * The class does not interact directly with mySql, instead it works with
+ * DAO models and implementations
  */
 
 public abstract class Login {

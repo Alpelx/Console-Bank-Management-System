@@ -11,7 +11,9 @@ import com.bankManagement.AccountManagement.DAO_Models.UserAccount;
 import com.bankManagement.Features.ConsoleTextColors;
 
 /**
- * @Description this is the class what provide removing account
+ * @Description: this is the class what provide removing account of an
+ * employee or user. The class does not interact directly with mySql,
+ * instead it works with DAO models and implementations
  */
 
 public class Removing {

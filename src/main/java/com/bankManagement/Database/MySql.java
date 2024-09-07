@@ -1,7 +1,7 @@
 package com.bankManagement.Database;
 
 /**
- * @Description This is a class which provides fast creating a
+ * @Description: This is a class which provides fast creating a
  * connection to MySql database by calling one method. Method is
  * protected, because it must be able to use only by classes which
  * need it. In this way I respect Encapsulation. Connecting to

@@ -1,5 +1,10 @@
 package com.bankManagement.AccountManagement.DAO_Models;
 
+/**
+ * @Description: This is the class that define a user account to make
+ * easier managing his data and operations through the java program.
+ */
+
 import lombok.Getter;
 import lombok.Setter;
 

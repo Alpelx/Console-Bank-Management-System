@@ -1,16 +1,16 @@
 package com.bankManagement.AccountManagement.DAO_Models;
 
 /**
- * @Description This is the class that define an employee to make
- * easier managing his data and operations through the java program
+ * @Description: This is the class that define an employee to make
+ * easier managing his data and operations through the java program.
  */
 
 import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.DateFormat;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -22,11 +22,11 @@ public class Employee {
     private LocalDate dateOfBirth;
     private String functionAtWork;
     private int workExperience;
-    private boolean has_account;
+    private boolean account;
 
     public Employee(int id, String idnp, String firstname, String lastname,
                     LocalDate dateOfBirth, String functionAtWork,
-                    int workExperience, boolean has_account) {
+                    int workExperience, boolean account) {
         this.id = id;
         this.idnp = idnp;
         this.firstname = firstname;
@@ -34,7 +34,7 @@ public class Employee {
         this.dateOfBirth = dateOfBirth;
         this.functionAtWork = functionAtWork;
         this.workExperience = workExperience;
-        this.has_account = has_account;
+        this.account = account;
     }
 
     public Employee(String idnp, String firstname, String lastname,
@@ -50,18 +50,17 @@ public class Employee {
 
     @Override
     public String toString() {
-        DateTimeFormatter dateTimeFormatter =
-                DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return ConsoleTextColors.BLUE_BOLD + "\nMy Data: "
                 + ConsoleTextColors.BLUE
                 + "\nId: " + id
                 + "\nIdnp: " + idnp
                 + "\nFirstname: " + firstname
-                + "\nLastname: " + lastname +
-                "\nDate of birth: " + dateOfBirth.format(dateTimeFormatter)
+                + "\nLastname: " + lastname
+                + "\nDate of birth: "
+                + dateOfBirth.format(DateFormat.DATE_FORMAT)
                 + "\nFunction at work: " + functionAtWork
                 + "\nWork experience: " + workExperience
-                + "\nHas account: " + has_account
+                + "\nHas account: " + account
                 + ConsoleTextColors.RESET;
     }
 }

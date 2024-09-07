@@ -1,5 +1,13 @@
 package com.bankManagement.AccountManagement.DAO_Implimentations;
 
+/**
+ * @Description: this is the class that describe the functionality above
+ * an employee. Here are functionalities like adding, updating, removing
+ * and getting an employee by some specific parameters. The class interacts
+ * directly with sql, and further methods will be called for interacting
+ * with database through the non sql way.
+ */
+
 import com.bankManagement.AccountManagement.DAO_Interfaces.EmployeeDAO;
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.Database.MySql;
@@ -10,6 +18,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeActions implements EmployeeDAO {
+    public EmployeeActions() {
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+        String query = "UPDATE employees SET function_at_work = ?, "
+                + "work_experience = ?, has_account = ? WHERE "
+                + "id = ?";
+        try (Connection connection = MySql.getConnection()) {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, employee.getFunctionAtWork());
+            stmt.setInt(2, employee.getWorkExperience());
+            stmt.setBoolean(3, employee.isAccount());
+            stmt.setInt(4, employee.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void addEmployee(Employee employee) {
         try (Connection connection = MySql.getConnection()) {
@@ -23,23 +51,6 @@ public class EmployeeActions implements EmployeeDAO {
             stmt.setDate(4, Date.valueOf(employee.getDateOfBirth()));
             stmt.setString(5, employee.getFunctionAtWork());
             stmt.setInt(6, employee.getWorkExperience());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void updateEmployee(Employee employee) {
-        String query = "UPDATE employees SET function_at_work = ?, "
-                + "work_experience = ?, has_account = ? WHERE "
-                + "id = ?";
-        try (Connection connection = MySql.getConnection()) {
-            PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setString(1, employee.getFunctionAtWork());
-            stmt.setInt(2, employee.getWorkExperience());
-            stmt.setBoolean(3, employee.isHas_account());
-            stmt.setInt(4, employee.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,8 +95,7 @@ public class EmployeeActions implements EmployeeDAO {
     }
 
     @Override
-    public @Nullable Employee getEmployee(String firstname,
-                                          String lastname) {
+    public @Nullable Employee getEmployee(String firstname, String lastname) {
         try (Connection connection = MySql.getConnection()) {
             String query = "SELECT *, COUNT(*) AS Count FROM employees "
                     + "WHERE firstname = ? AND lastname = ?"
@@ -115,12 +125,9 @@ public class EmployeeActions implements EmployeeDAO {
         return null;
     }
 
-    private boolean isValidEmployee(ResultSet rs)
-            throws SQLException {
+    private boolean isValidEmployee(ResultSet rs) throws SQLException {
         while (rs.next()) {
-            if (rs.getInt("Count") == 1) {
-                return true;
-            }
+            return rs.getInt("Count") == 1;
         }
         return false;
     }
@@ -135,7 +142,7 @@ public class EmployeeActions implements EmployeeDAO {
             while (rs.next()) {
                 employees.add(getEmployeeById(rs.getInt("id")));
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return employees;

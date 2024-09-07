@@ -1,13 +1,18 @@
 package com.bankManagement.AccountManagement.DAO_Interfaces;
 
+/**
+ * @Description: this is and DAO pattern followed interface, which define
+ * operations that must have an employee.
+ */
+
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
 
 import java.util.List;
 
 public interface EmployeeDAO {
-    void addEmployee(Employee employee);
-
     void updateEmployee(Employee employee);
+
+    void addEmployee(Employee employee);
 
     void deleteEmployee(Employee employee);
 

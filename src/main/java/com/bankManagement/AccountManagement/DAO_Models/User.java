@@ -1,11 +1,16 @@
 package com.bankManagement.AccountManagement.DAO_Models;
 
+/**
+ * @Description: This is the class that define user to make easier
+ * managing his data and operations through the java program.
+ */
+
 import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.DateFormat;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -16,22 +21,18 @@ public class User {
     private String lastname;
     private LocalDate dateOfBirth;
     private double balance;
-    private boolean hasAccount;
-
-    public String getFirstname() {
-        return firstname + "fsfsdgsdf";
-    }
+    private boolean account;
 
     public User(int id, String idnp, String firstname, String lastname,
                 LocalDate dateOfBirth, double balance,
-                boolean hasAccount) {
+                boolean account) {
         this.id = id;
         this.idnp = idnp;
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
         this.balance = balance;
-        this.hasAccount = hasAccount;
+        this.account = account;
     }
 
     public User(String idnp, String firstname, String lastname,
@@ -45,17 +46,16 @@ public class User {
 
     @Override
     public String toString() {
-        DateTimeFormatter dateTimeFormatter =
-                DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return ConsoleTextColors.BLUE_BOLD + "My data:"
                 + ConsoleTextColors.BLUE
                 + "\nId: " + id
                 + "\nIdnp: " + idnp
                 + "\nFirstname: " + firstname
                 + "\nLastname: " + lastname
-                + "\nDate of birth: " + dateOfBirth.format(dateTimeFormatter)
+                + "\nDate of birth: "
+                + dateOfBirth.format(DateFormat.DATE_FORMAT)
                 + "\nBalance: " + balance
-                + "\nHas account: " + hasAccount + "\n\n" +
+                + "\nHas account: " + account + "\n\n" +
                 ConsoleTextColors.RESET;
     }
 }

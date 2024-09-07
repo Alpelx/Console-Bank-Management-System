@@ -1,7 +1,7 @@
 package com.bankManagement.Features;
 
 /**
- * @Description This is an abstract class which provides some console
+ * @Description: This is an abstract class which provides some console
  * features and operations, and also some methods for reading data
  */
 

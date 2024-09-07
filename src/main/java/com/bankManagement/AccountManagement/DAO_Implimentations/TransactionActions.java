@@ -1,11 +1,19 @@
 package com.bankManagement.AccountManagement.DAO_Implimentations;
 
+/**
+ * @Description: this class describe the behavior of the executing
+ * transactions such as deposit, withdrawal and transfer money for
+ * someone else. As well here can get transaction history for whole
+ * bank or for a certain user. The class interacts directly with mySql,
+ * and further methods will be called for interact with database
+ * through the non sql way.
+ */
+
 import com.bankManagement.AccountManagement.DAO_Interfaces.TransactionDAO;
 import com.bankManagement.AccountManagement.DAO_Models.Transaction;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.Database.MySql;
-import com.bankManagement.Features.ConsoleTextColors;
-import com.bankManagement.Sources.UserOperationTypes;
+import com.bankManagement.Sources.TransactionTypes;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -13,9 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionActions implements TransactionDAO {
+    public TransactionActions() {
+    }
+
     @Override
     public Transaction execTransaction(double amount, User user,
-                                       UserOperationTypes operationType) {
+                                       TransactionTypes operationType) {
         try (Connection connection = MySql.getConnection()) {
             connection.setAutoCommit(false);
             Savepoint savepoint = connection.setSavepoint();

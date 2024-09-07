@@ -1,10 +1,12 @@
 package com.bankManagement.Panels;
 
 /**
- * @Description This is an interface which must implement every class
- * that should have a menu. To not define each method bellow many
- * times, I just pushed 'em into one interface and just reuse anytime
- * when i need it
+ * @Description: This is an interface which must implement every class
+ * that should have a menu (each panel). It has two abstract classes
+ * because their body depends on the specific usage and restrictions
+ * of each type of account displayed by each panel respectively.
+ * Two methods have described their body here, because it remains the
+ * same regardless which panel will use that.
  */
 
 import com.bankManagement.Features.ConsoleReading;
@@ -30,8 +32,6 @@ public abstract class Menu {
             System.out.println();
             return -1;
         }
-
-
     }
 
     public void run() {

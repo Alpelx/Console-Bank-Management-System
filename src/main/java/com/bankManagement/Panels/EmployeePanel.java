@@ -1,9 +1,10 @@
 package com.bankManagement.Panels;
 
 /**
- * @Description this class define employee panel what appear and is
- * running while employee is logged in. Here are called all methods
- * what perform the employee operations
+ * @Description: this is the class what define employee panel which is
+ * opened when an employee is logged in. Here are described employee
+ * actions that he can do. The class does not interact directly with
+ * mySql, instead it works with DAO models and implementations
  */
 
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
@@ -42,12 +43,11 @@ public class EmployeePanel extends Menu {
                         + ConsoleTextColors.RESET + "\n\n");
                 return false;
             case -1:
-                return true;
+                break;
             default:
                 System.out.println(ConsoleTextColors.RED_BOLD
                         + "Error [ Wrong input ]"
-                        + ConsoleTextColors.RESET);
-                System.out.println();
+                        + ConsoleTextColors.RESET + "\n");
                 break;
         }
         return true;

@@ -1,5 +1,10 @@
 package com.bankManagement.Features;
 
+/**
+ * @Description: this is an interface which make the console application
+ * more interactive using custom text colors.
+ */
+
 public interface ConsoleTextColors {
     String RESET = "\033[0m";
     String CYAN = "\033[0;36m";

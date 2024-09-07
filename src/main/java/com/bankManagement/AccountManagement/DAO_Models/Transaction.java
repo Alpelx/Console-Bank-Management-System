@@ -1,6 +1,12 @@
 package com.bankManagement.AccountManagement.DAO_Models;
 
+/**
+ * @Description: This is the class that define a transaction to make
+ * easier executing them through the java program.
+ */
+
 import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.DateFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +23,8 @@ public class Transaction {
     private String type;
     private int userId;
 
-    public Transaction(int id, double amount, LocalDateTime date, String type, int userId) {
+    public Transaction(int id, double amount, LocalDateTime date,
+                       String type, int userId) {
         this.id = id;
         this.amount = amount;
         this.date = date;
@@ -35,13 +42,11 @@ public class Transaction {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter
-                .ofPattern("dd-MM-yyyy");
-        return ConsoleTextColors.BLUE_BOLD + "Transaction: \n"
-                + "Id -> " + id + "\n"
-                + "Amount -> " + amount + "\n"
-                + "Date -> " + date.format(formatter) + "\n"
-                + "Type -> " + type + "\n"
-                + "User id -> " + userId + "\n\n";
+        return ConsoleTextColors.BLUE_BOLD + "Transaction:"
+                + "\nId -> " + id
+                + "\nAmount -> " + amount
+                + "\nDate -> " + date.format(DateFormat.DATE_FORMAT)
+                + "\nType -> " + type
+                + "\nUser id -> " + userId + "\n\n";
     }
 }

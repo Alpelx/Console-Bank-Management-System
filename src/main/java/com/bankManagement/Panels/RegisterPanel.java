@@ -1,9 +1,12 @@
 package com.bankManagement.Panels;
 
 /**
- * @Description this is the class what define register panel. Here
+ * @Description: this is the class what define register panel. Here
  * employees or users are able to register their own account. Only is one
- * account allowed.
+ * account allowed. Admin account cannot be registered here, because
+ * admin privileges must be only granted by another administrators.
+ * The class does not interact directly with mySql, instead it works
+ * with DAO models and implementations.
  */
 
 import com.bankManagement.Sources.AccountType;

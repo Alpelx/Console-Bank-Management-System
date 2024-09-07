@@ -1,10 +1,12 @@
 package com.bankManagement.Panels;
 
 /**
- * @Description this is the class what define admin panel which is opened
- * when an admin is logged in. Here he can do any administrator actions.
- * Each action is defined by own methods with private access modifier for
- * being unable to be called by other classes.
+ * @Description: this is the class what define admin panel which is
+ * opened when an admin is logged in. Here he can do any administrator
+ * actions. Each action is defined by own method/s with private access
+ * modifier for being unable to be called by other classes. The class
+ * does not interact directly with mySql, instead it works with DAO
+ * models and implementations.
  */
 
 import com.bankManagement.AccountManagement.DAO_Implimentations.*;
@@ -121,7 +123,6 @@ public class AdminPanel extends Menu {
         String lastname = ConsoleReading.readString("Enter last name: ");
         LocalDate dateOfBirth = ConsoleReading.readLocalDate();
         double balance = ConsoleReading.readInt("Enter balance: ");
-
         return new User(idnp, firstname, lastname, dateOfBirth, balance);
     }
 
@@ -136,14 +137,12 @@ public class AdminPanel extends Menu {
         String lastname = ConsoleReading.readString("Enter lastname: ");
         LocalDate dateOfBirth = ConsoleReading.readLocalDate();
         String functionAtWork = ConsoleReading
-                .readString("Enter function at work (use '\\'' "
-                        + "instead of space): ");
+                .readString("Enter function at work (use '\\'' instead "
+                        + "of space): ").replace("\\", " ");
         int workExperience = ConsoleReading
                 .readInt("Enter work experience: ");
-
         return new Employee(idnp, firstname, lastname, dateOfBirth,
-                functionAtWork.replace("\\", " "),
-                workExperience);
+                functionAtWork, workExperience);
     }
 
     private @NotNull String readIdnp() {
@@ -183,8 +182,7 @@ public class AdminPanel extends Menu {
     private void grantAdmin() {
         Employee employee = employeeActions.getEmployee(
                 ConsoleReading.readString("Enter first name: "),
-                ConsoleReading.readString("Enter last name: ")
-        );
+                ConsoleReading.readString("Enter last name: "));
         if (employee == null) {
             displayErrorMessage();
         } else {
@@ -199,14 +197,12 @@ public class AdminPanel extends Menu {
                 employeeAccountActions.updateAccount(employeeAccount);
             }
         }
-
     }
 
     private void revokeAdmin() {
         Employee employee = employeeActions.getEmployee(
                 ConsoleReading.readString("Enter first name: "),
-                ConsoleReading.readString("Enter last name: ")
-        );
+                ConsoleReading.readString("Enter last name: "));
         if (employee == null) {
             displayErrorMessage();
         } else {
@@ -221,7 +217,6 @@ public class AdminPanel extends Menu {
                 employeeAccountActions.updateAccount(employeeAccount);
             }
         }
-
     }
 
     private void displayAllTransactions() {

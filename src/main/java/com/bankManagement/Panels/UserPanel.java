@@ -1,5 +1,14 @@
 package com.bankManagement.Panels;
 
+/**
+ * @Description: this is the class what define user panel which is
+ * opened when a user is logged in. Here users can process some
+ * operations like check their data and balance and also can process
+ * some transactions like deposit, withdrawal and transfer money to
+ * someone else. The class does not interact directly with mySql,
+ * instead it works with DAO models and implementations.
+ */
+
 import com.bankManagement.AccountManagement.DAO_Implimentations.TransactionActions;
 import com.bankManagement.AccountManagement.DAO_Implimentations.UserAccountActions;
 import com.bankManagement.AccountManagement.DAO_Implimentations.UserActions;
@@ -8,7 +17,7 @@ import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.DAO_Models.UserAccount;
 import com.bankManagement.Features.ConsoleReading;
 import com.bankManagement.Features.ConsoleTextColors;
-import com.bankManagement.Sources.UserOperationTypes;
+import com.bankManagement.Sources.TransactionTypes;
 
 public class UserPanel extends Menu {
     private User user;
@@ -50,11 +59,11 @@ public class UserPanel extends Menu {
                 break;
             case 3:
                 amount = ConsoleReading.readDouble("Enter amount: ");
-                addMoney(UserOperationTypes.deposit, user, amount);
+                addMoney(TransactionTypes.deposit, user, amount);
                 break;
             case 4:
                 amount = ConsoleReading.readDouble("Enter amount: ");
-                takeOutMoney(UserOperationTypes.withdrawal, amount);
+                takeOutMoney(TransactionTypes.withdrawal, amount);
                 break;
             case 5:
                 amount = ConsoleReading.readDouble("Enter amount: ");
@@ -80,10 +89,9 @@ public class UserPanel extends Menu {
         return true;
     }
 
-    private void addMoney(UserOperationTypes userOperationType,
+    private void addMoney(TransactionTypes userOperationType,
                           User user, double amount) {
-        if (userOperationType == UserOperationTypes.withdrawal
-                || userOperationType == UserOperationTypes.transfer_out) {
+        if (isValidAddMoneyOperation(userOperationType)) {
             System.out.println(ConsoleTextColors.RED_BOLD
                     + "Error [ invalid operation ] " +
                     ConsoleTextColors.RESET);
@@ -102,10 +110,14 @@ public class UserPanel extends Menu {
         }
     }
 
-    private void takeOutMoney(UserOperationTypes userOperationType,
+    private static boolean isValidAddMoneyOperation(TransactionTypes userOperationType) {
+        return userOperationType == TransactionTypes.withdrawal
+                || userOperationType == TransactionTypes.transfer_out;
+    }
+
+    private void takeOutMoney(TransactionTypes userOperationType,
                               double amount) {
-        if (userOperationType == UserOperationTypes.deposit
-                || userOperationType == UserOperationTypes.transfer_in) {
+        if (isValidTakeOutMoneyOperation(userOperationType)) {
             System.out.println(ConsoleTextColors.RED_BOLD
                     + "Error [ invalid operation ] " +
                     ConsoleTextColors.RESET);
@@ -129,6 +141,11 @@ public class UserPanel extends Menu {
         }
     }
 
+    private static boolean isValidTakeOutMoneyOperation(TransactionTypes userOperationType) {
+        return userOperationType == TransactionTypes.deposit
+                || userOperationType == TransactionTypes.transfer_in;
+    }
+
     private void transfer(double amount) {
         if (user.getBalance() < amount) {
             System.out.println(ConsoleTextColors.RED_BOLD
@@ -147,8 +164,8 @@ public class UserPanel extends Menu {
                     + "Error [ user not found ]"
                     + ConsoleTextColors.RESET);
         } else {
-            takeOutMoney(UserOperationTypes.transfer_out, amount);
-            addMoney(UserOperationTypes.transfer_in, receiver, amount);
+            takeOutMoney(TransactionTypes.transfer_out, amount);
+            addMoney(TransactionTypes.transfer_in, receiver, amount);
         }
     }
 

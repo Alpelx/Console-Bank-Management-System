@@ -13,10 +13,11 @@ import com.bankManagement.Features.ConsoleTextColors;
 import com.bankManagement.Sources.AccountType;
 
 /**
- * @Description this is the class where is performed account registration
- * for an employee or user. There are one main public method what is
- * called to register and some private methods to increase readability
- * and make code cleaner
+ * @Description: this is the class where is performed account registration
+ * for an employee or user. Here is one main public method what is
+ * called for registering and some private methods to increase readability
+ * and make code cleaner. The class does not interact directly with
+ * mySql, instead it works with DAO models and implementations
  */
 
 public abstract class Registration {
@@ -25,25 +26,23 @@ public abstract class Registration {
         String lastname = ConsoleReading.readString("Enter lastname: ");
         switch (accountType) {
             case employee:
-                EmployeeActions employeeActions = new EmployeeActions();
-                Employee employee = employeeActions.getEmployee(firstname,
-                        lastname);
-                if (employee == null || employee.isHas_account()) {
-                    employeeErrorMessage();
-                } else {
-                    registerEmployeeData(employee, employeeActions);
-                }
+                registerEmployee(firstname, lastname);
                 break;
             case user:
-                UserActions userActions = new UserActions();
-                User user = userActions.getUser(firstname, lastname);
-                if (user == null || user.isHasAccount()) {
-                    userErrorMessage();
-                } else {
-                    registerUserData(user, userActions);
-                }
+                RegisterUser(firstname, lastname);
                 break;
         }
+    }
+
+    private static void registerEmployee(String firstname, String lastname) {
+        EmployeeActions employeeActions = new EmployeeActions();
+        Employee employee = employeeActions.getEmployee(firstname, lastname);
+        if (employee == null || employee.isAccount()) {
+            employeeErrorMessage();
+        } else {
+            setEmployeeData(employee, employeeActions);
+        }
+        return;
     }
 
     private static void employeeErrorMessage() {
@@ -52,18 +51,27 @@ public abstract class Registration {
                 + "has account ]" + ConsoleTextColors.RESET);
     }
 
-    private static void registerEmployeeData(Employee employee,
-                                             EmployeeActions employeeActions) {
+    private static void setEmployeeData(Employee employee,
+                                        EmployeeActions employeeActions) {
         String login = ConsoleReading.readString("Enter login: ");
         String password = ConsoleReading.readString("Enter password: ");
         EmployeeAccount employeeAccount = new EmployeeAccount(
-                login, password, "regular", employee.getId()
-        );
+                login, password, "regular", employee.getId());
         EmployeeAccountActions employeeAccountActions =
                 new EmployeeAccountActions();
         employeeAccountActions.addEmployeeAccount(employeeAccount);
-        employee.setHas_account(true);
+        employee.setAccount(true);
         employeeActions.updateEmployee(employee);
+    }
+
+    private static void RegisterUser(String firstname, String lastname) {
+        UserActions userActions = new UserActions();
+        User user = userActions.getUser(firstname, lastname);
+        if (user == null || user.isAccount()) {
+            userErrorMessage();
+        } else {
+            setUserData(user, userActions);
+        }
     }
 
     private static void userErrorMessage() {
@@ -72,14 +80,13 @@ public abstract class Registration {
                 + ConsoleTextColors.RESET);
     }
 
-    private static void registerUserData(User user, UserActions userActions) {
+    private static void setUserData(User user, UserActions userActions) {
         String login = ConsoleReading.readString("Enter login: ");
         String password = ConsoleReading.readString("Enter password: ");
-        UserAccount userAccount = new UserAccount(login, password,
-                user.getId());
+        UserAccount userAccount = new UserAccount(login, password, user.getId());
         UserAccountActions userAccountActions = new UserAccountActions();
         userAccountActions.addUserAccount(userAccount);
-        user.setHasAccount(true);
+        user.setAccount(true);
         userActions.updateUser(user);
     }
 }
