@@ -64,8 +64,8 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 * Computer Output:
   >The system should also display success or error messages once any operation completes, such as "Transaction successful" and "Customer added successfully, respectively.
 
-- Prepare for Future Enhancements:
-   >Design the project in a modular way to provide for the least effort to extend or refactor with any future technologies, especially Hibernate.
+* Prepare for Future Enhancements:
+  >Design the project in a modular way to provide for the least effort to extend or refactor with any future technologies, especially Hibernate.
 
 ## Application Structure
 
@@ -87,7 +87,7 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 7. Grant admin privileges to an employee
 8. Revoke admin privileges from an employee
 9. Display transaction history
->9.1 certain user.  
+>9.1 certain user.
 >9.2 For whole bank.
 
 
