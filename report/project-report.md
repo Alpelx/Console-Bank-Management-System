@@ -103,5 +103,5 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 
 
 ## Oraganization
-**Name:** Alpelx  
-**Logo:** [](./img/Logo.jpg)
+### Alpelx 
+![](./img/Logo.jpg)
