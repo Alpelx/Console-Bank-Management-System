@@ -41,31 +41,31 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 ## Scope
 
 * Human Resources;
-  >Module that takes care of the customer's information: account opening, updating of account details, and retrieval of customer information.
+   >Module that takes care of the customer's information: account opening, updating of account details, and retrieval of customer information.
 
 * Account Management
-  >That allows the user to work on the account with deposits, withdrawals, or even transfers between accounts.
+   >That allows the user to work on the account with deposits, withdrawals, or even transfers between accounts.
 
 * Transaction History:
-  >Store the history of the transactions in each account and access it, making sure that all actions are stored within the database.
+   >Store the history of the transactions in each account and access it, making sure that all actions are stored within the database.
 
 * Basic Authentication:
-  >A simple login feature allows the banking staff or customers to log in securely into a JDBC that validates user credentials.
+   >A simple login feature allows the banking staff or customers to log in securely into a JDBC that validates user credentials.
 
 * Database Design:
-  >Design a relational database system in MySQL with tables specifically designed for Customers, Accounts, Transactions, and Banking Personnel.
+   >Design a relational database system in MySQL with tables specifically designed for Customers, Accounts, Transactions, and Banking Personnel.
 
 * DAO Pattern Implementation
-  >For every major operation, there will be a corresponding DAO class: Customer, Account, Transaction-enhancing the code's separation and reusability by interacting directly with the database via JDBC.
+   >For every major operation, there will be a corresponding DAO class: Customer, Account, Transaction-enhancing the code's separation and reusability by interacting directly with the database via JDBC.
 
 * Exception Handling:
-  >Handle issues regarding database connections, failures during the execution of SQL, and/or transaction management with proper exception handling.
+    >Handle issues regarding database connections, failures during the execution of SQL, and/or transaction management with proper exception handling.
 
 * Computer Output:
-  >The system should also display success or error messages once any operation completes, such as "Transaction successful" and "Customer added successfully, respectively.
+    >The system should also display success or error messages once any operation completes, such as "Transaction successful" and "Customer added successfully, respectively.
 
 * Prepare for Future Enhancements:
-  >Design the project in a modular way to provide for the least effort to extend or refactor with any future technologies, especially Hibernate.
+    >Design the project in a modular way to provide for the least effort to extend or refactor with any future technologies, especially Hibernate.
 
 ## Application Structure
 
