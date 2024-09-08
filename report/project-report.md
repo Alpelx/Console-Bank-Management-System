@@ -10,7 +10,7 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 ## Organization
 
 ###  Alpelex
-![ ](Screenshots/Logo.png)
+![ ](./Screenshots/ExitApp.png)
 
 
 
