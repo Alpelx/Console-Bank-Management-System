@@ -95,7 +95,7 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 7. Grant admin privileges to an employee
 8. Revoke admin privileges from an employee
 9. Display transaction history
->9.1 certain user.
+>9.1 certain user.  
 >9.2 For whole bank.
 
 
