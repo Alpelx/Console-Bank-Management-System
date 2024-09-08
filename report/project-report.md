@@ -3,14 +3,14 @@
 
 |Author | Date release | Date End|
 |--------|--------------|---------|
-|Scriba Mihail|   31 aug 2024             |     4 sept 2024    |
+Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 
 
 
 ## Organization
 
 ###  Alpelex
-![ ](..Logo.png)
+![ ](Screenshots/Logo.png)
 
 
 
@@ -22,4 +22,3 @@
  be precisely explained: User, Employee, and Admin. The sole motive of this below
  project is going to learn and implement concepts of JDBC along with DAO patterns
  for separation of business logic and database respectively.
-### Authors
