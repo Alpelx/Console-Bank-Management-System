@@ -87,11 +87,21 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 7. Grant admin privileges to an employee
 8. Revoke admin privileges from an employee
 9. Display transaction history
->9.1 certain user.
->9.2 For whole bank.
+   >9.1 certain user.  
+   >9.2 For whole bank.
 
 
-User: A user can perform the following tasks:
-Check account balances.
-View transaction history.
-Perform basic transactions.
+**User**:
+1. Display info about me
+2. Check my account balance
+3. Make a deposit
+4. Make a withdrawal
+5. Make a transfer to another user
+6. Remove my account
+
+
+
+
+## Oraganization
+**Name:** Alpelx  
+**Logo:** [](./img/Logo.jpg)
