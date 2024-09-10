@@ -13,8 +13,9 @@
     
 ## Architecture and design
 ### **System Architecture**
+
 ```mermaid
-    flowchart RL
+    flowchart LR
 BPS(Basic project structure)
 MP(Main Panel)
 GI(Git integration)
@@ -40,3 +41,7 @@ LE --> EP(Employee panel)
 
 AP & EP & UP -- DAO ---> ET
 ```
+
+### Design patterns:
+* __Singleton pattern:__ Used in MySql.java for handling centralized connection with the database.
+* __DAO pattern:__ The UserDAO interface, with other DAO interfaces that may be in the project, will abstract database operations relating to different entities—in this case, users, employees, and transactions.
