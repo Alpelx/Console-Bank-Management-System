@@ -5,7 +5,6 @@
 |Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 
 ---
-<!-- <br><br><br> -->
 
 ## Table of contents
 
@@ -26,7 +25,6 @@
 ### 8. [Program screenshots results](./pages/result-screenshoots.md)
 
 ---
-<!-- <br><br><br> -->
 
 ## Introduction
 
@@ -38,7 +36,6 @@
  for separation of business logic and database respectively.
 
 ---
-<!-- <br><br><br> -->
 
 ## Objectives
 
@@ -63,7 +60,6 @@
     >Get a good grasp on how JDBC works, hence making shifting to Hibernate, an advanced ORM framework, very smooth.
 
 ---
-<!-- <br><br><br> -->
 
 ## Scopes
 
@@ -95,7 +91,6 @@
     >Design the project in a modular way to provide for the least effort to extend or refactor with any future technologies, especially Hibernate.
 
 ---
-<!-- <br><br><br> -->
 
 ## Oraganization
 

@@ -14,12 +14,11 @@
 
 ### 6. [Technologies used](./system-design.md#technologies-used)
 
-### 7. [Architecure and Design](./system-design.md#architecture-and-design) 
+### 7. [Architecure and Design](./system-design.md#architecture-and-design)
 
-### 8. [Program screenshots results](./result-screenshoots.md) 
+### 8. [Program screenshots results](./result-screenshoots.md)
 
 ---
-<br><br><br>
 
 ## Application Structure
 
@@ -54,7 +53,6 @@
 6. Remove my account
 
 ---
-<br><br><br>
 
 ## Technologies used
 
@@ -70,7 +68,6 @@
     !["Database Entity-Relationship Diagram (ERD)"](../img/ERD.png)
 
 ---
-<br><br><br>
 
 ## Architecture and design
 
@@ -110,4 +107,3 @@ AP & EP & UP -- DAO ---> ET
 * **DAO pattern:** The UserDAO interface, with other DAO interfaces that may be in the project, will abstract database operations relating to different entities—in this case, users, employees, and transactions.
 
 ---
-<br><br><br>

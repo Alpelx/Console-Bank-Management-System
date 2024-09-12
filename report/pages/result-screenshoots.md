@@ -14,12 +14,11 @@
 
 ### 6. [Technologies used](./system-design.md#technologies-used)
 
-### 7. [Architecure and Design](./system-design.md#architecture-and-design) 
+### 7. [Architecure and Design](./system-design.md#architecture-and-design)
 
-### 8. [Program screenshots results](./result-screenshoots.md) 
+### 8. [Program screenshots results](./result-screenshoots.md)
 
 ---
-<br><br><br>
 
 ## Launching the program (main panel)
 
