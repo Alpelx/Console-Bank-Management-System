@@ -38,7 +38,7 @@
 
 ## Admin - log in and displaying panel
 
-![Admin panel](../screenshots/Admin/Admin%20panel.png)
+![Admin panel](../screenshots/Admin/Admin-panel.png)
 
 ### Admin Panel - option 1 (Display all users)
 
