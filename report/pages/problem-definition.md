@@ -64,7 +64,7 @@ Avoid unauthorized entry and ensure data integrity.
     - Error messages and instructions are visible and clear to the user.
 
 4. **Reliability:**
-    -Information is consistent and accurate, most especially in transactions and provides for rollback in case the process of a transaction was erroneous.
+    - Information is consistent and accurate, most especially in transactions and provides for rollback in case the process of a transaction was erroneous.
 
 ---
 
