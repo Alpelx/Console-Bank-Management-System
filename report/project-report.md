@@ -4,10 +4,21 @@
 |Author | Date release | Date End|
 |--------|--------------|---------|
 Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
+---------------------------
+<br><br><br>
 
+# Table of contents
+### 1. [Introduction](./project-report.md#introduction)
+### 2. [Objectives](./project-report.md#objectives)
+### 3. [Scopes](./project-report.md#scopes)
+### 4. [Problem Definition](./pages/problem-definition.md)
+### 5. [Application Structure](./pages/system-design.md#application-structure)
+### 6. [Technologies used](./pages/system-design.md#technologies-used)
+### 7. [Architecure and Design](./pages/system-design.md#architecture-and-design)  
+---------------------------------
+<br><br><br>
 
-
-## Absatract
+# Introduction
 
  Below is the console-based banking system implemented in Java, and for database
  interaction, JDBC is used. The aforementioned program will help to maintain a
@@ -16,7 +27,10 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
  project is going to learn and implement concepts of JDBC along with DAO patterns
  for separation of business logic and database respectively.
 
-## Objectives:
+-------------------------------
+<br><br><br>
+
+# Objectives:
 
 * JDBC API and DAO Pattern:
 
@@ -38,7 +52,10 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 
     >Get a good grasp on how JDBC works, hence making shifting to Hibernate, an advanced ORM framework, very smooth.
 
-## Scope
+--------------------------------------
+<br><br><br>
+
+# Scopes
 
 * Human Resources;
    >Module that takes care of the customer's information: account opening, updating of account details, and retrieval of customer information.
@@ -66,42 +83,9 @@ Scriba Mihail |   31 aug 2024             |     4 sept 2024    |
 
 * Prepare for Future Enhancements:
     >Design the project in a modular way to provide for the least effort to extend or refactor with any future technologies, especially Hibernate.
+------------------------------
+<br><br><br>
 
-## Application Structure
-
-### 1. **Roles and Functionality**:
-
- **Employee**:
-
- 1. Display my data.
- 2. Dismis from work.
-
-**Admin**:
-
-1. Dispaly users.
-2. Dispaly employees.
-3. Add an user.
-4. Add an emplyees.
-5. Remove an user.
-6. Remove an emplyees.
-7. Grant admin privileges to an employee
-8. Revoke admin privileges from an employee
-9. Display transaction history
-   >9.1 certain user.  
-   >9.2 For whole bank.
-
-
-**User**:
-1. Display info about me
-2. Check my account balance
-3. Make a deposit
-4. Make a withdrawal
-5. Make a transfer to another user
-6. Remove my account
-
-
-
-
-## Oraganization
+# Oraganization
 ### Alpelx 
-![](./img/Logo.jpg)
+![Logo](./img/Logo.jpg)
