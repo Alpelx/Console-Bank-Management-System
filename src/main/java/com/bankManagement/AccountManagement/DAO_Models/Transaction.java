@@ -5,14 +5,12 @@ package com.bankManagement.AccountManagement.DAO_Models;
  * easier executing them through the java program.
  */
 
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 import com.bankManagement.Features.DateFormat;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -42,7 +40,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return ConsoleTextColors.BLUE_BOLD + "Transaction:"
+        return Colorable.BLUE_BOLD + "Transaction:"
                 + "\nId -> " + id
                 + "\nAmount -> " + amount
                 + "\nDate -> " + date.format(DateFormat.DATE_FORMAT)

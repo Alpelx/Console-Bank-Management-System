@@ -10,7 +10,7 @@ package com.bankManagement.Panels;
  */
 
 import com.bankManagement.Features.ConsoleReading;
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 
 import java.util.InputMismatchException;
 
@@ -21,14 +21,14 @@ public abstract class Menu {
 
     private int readChoice() {
         try {
-            System.out.print(ConsoleTextColors.GREEN_BOLD
-                    + "Enter your choice: " + ConsoleTextColors.RESET);
+            System.out.print(Colorable.GREEN_BOLD
+                    + "Enter your choice: " + Colorable.RESET);
             return ConsoleReading.SCANNER.nextInt();
         } catch (InputMismatchException e) {
             ConsoleReading.SCANNER.next();
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ Please enter a valid number ]"
-                    + ConsoleTextColors.RESET);
+                    + Colorable.RESET);
             System.out.println();
             return -1;
         }

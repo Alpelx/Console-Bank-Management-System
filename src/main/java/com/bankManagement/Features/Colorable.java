@@ -5,7 +5,7 @@ package com.bankManagement.Features;
  * more interactive using custom text colors.
  */
 
-public interface ConsoleTextColors {
+public interface Colorable {
     String RESET = "\033[0m";
     String CYAN = "\033[0;36m";
     String CYAN_BOLD = "\033[1;36m";

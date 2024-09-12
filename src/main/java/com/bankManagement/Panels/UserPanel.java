@@ -16,7 +16,7 @@ import com.bankManagement.AccountManagement.DAO_Models.Transaction;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.DAO_Models.UserAccount;
 import com.bankManagement.Features.ConsoleReading;
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 import com.bankManagement.Sources.TransactionTypes;
 
 public class UserPanel extends Menu {
@@ -34,15 +34,15 @@ public class UserPanel extends Menu {
 
     @Override
     protected void showMenuList() {
-        System.out.println(ConsoleTextColors.CYAN_BOLD
-                + "\n\nUser Panel\n" + ConsoleTextColors.RESET
+        System.out.println(Colorable.CYAN_BOLD
+                + "\n\nUser Panel\n" + Colorable.RESET
                 + "[1] -> Display my data\n"
                 + "[2] -> Display my balance\n"
                 + "[3] -> Make a deposit\n"
                 + "[4] -> Make a withdrawal\n"
                 + "[5] -> Make a transfer\n"
                 + "[6] -> Remove my account"
-                + ConsoleTextColors.RESET);
+                + Colorable.RESET);
     }
 
     @Override
@@ -53,8 +53,8 @@ public class UserPanel extends Menu {
                 System.out.println(user);
                 break;
             case 2:
-                System.out.println(ConsoleTextColors.BLUE_BOLD
-                        + "My balance: " + ConsoleTextColors.BLUE
+                System.out.println(Colorable.BLUE_BOLD
+                        + "My balance: " + Colorable.BLUE
                         + user.getBalance() + " MDL");
                 break;
             case 3:
@@ -71,21 +71,21 @@ public class UserPanel extends Menu {
                 break;
             case 6:
                 removeAccount();
-                System.out.println(ConsoleTextColors.GREEN_BOLD
+                System.out.println(Colorable.GREEN_BOLD
                         + "Account removed successfully"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
                 return false;
             case 0:
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "You have closed the user panel"
-                        + ConsoleTextColors.RESET + "\n\n");
+                        + Colorable.RESET + "\n\n");
                 return false;
             case -1:
                 break;
             default:
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "Error [ Wrong input ]"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
                 System.out.println();
                 break;
         }
@@ -95,9 +95,9 @@ public class UserPanel extends Menu {
     private void addMoney(TransactionTypes userOperationType,
                           User user, double amount) {
         if (isValidAddMoneyOperation(userOperationType)) {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ invalid operation ] " +
-                    ConsoleTextColors.RESET);
+                    Colorable.RESET);
             return;
         }
         user.setBalance(user.getBalance() + amount);
@@ -105,13 +105,13 @@ public class UserPanel extends Menu {
                 user, userOperationType);
         if (transaction != null) {
             transactionActions.addTransactionToHistory(transaction);
-            System.out.println(ConsoleTextColors.GREEN_BOLD
+            System.out.println(Colorable.GREEN_BOLD
                     + "Transaction finished successfully"
-                    + ConsoleTextColors.RESET);
+                    + Colorable.RESET);
         } else {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ something went wrong ] " +
-                    ConsoleTextColors.RESET);
+                    Colorable.RESET);
             user.setBalance(user.getBalance() - amount);
         }
     }
@@ -124,14 +124,14 @@ public class UserPanel extends Menu {
     private void takeOutMoney(TransactionTypes userOperationType,
                               double amount) {
         if (isValidTakeOutMoneyOperation(userOperationType)) {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ invalid operation ] " +
-                    ConsoleTextColors.RESET);
+                    Colorable.RESET);
             return;
         } else if (user.getBalance() < amount) {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ not enough money ] " +
-                    ConsoleTextColors.RESET);
+                    Colorable.RESET);
             return;
         }
         user.setBalance(user.getBalance() - amount);
@@ -139,13 +139,13 @@ public class UserPanel extends Menu {
                 user, userOperationType);
         if (transaction != null) {
             transactionActions.addTransactionToHistory(transaction);
-            System.out.println(ConsoleTextColors.GREEN_BOLD
+            System.out.println(Colorable.GREEN_BOLD
                     + "Transaction finished successfully"
-                    + ConsoleTextColors.RESET);
+                    + Colorable.RESET);
         } else {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ something went wrong ] " +
-                    ConsoleTextColors.RESET);
+                    Colorable.RESET);
             user.setBalance(user.getBalance() + amount);
         }
     }
@@ -157,21 +157,21 @@ public class UserPanel extends Menu {
 
     private void transfer(double amount) {
         if (user.getBalance() < amount) {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ not enough money ] " +
-                    ConsoleTextColors.RESET);
+                    Colorable.RESET);
             return;
         }
-        System.out.println(ConsoleTextColors.GREEN_BOLD
+        System.out.println(Colorable.GREEN_BOLD
                 + "Enter receiver full name: "
-                + ConsoleTextColors.RESET);
+                + Colorable.RESET);
         String firstname = ConsoleReading.readString("\tEnter firstname: ");
         String lastname = ConsoleReading.readString("\tEnter lastname: ");
         User receiver = userActions.getUser(firstname, lastname);
         if (receiver == null) {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ user not found ]"
-                    + ConsoleTextColors.RESET);
+                    + Colorable.RESET);
         } else {
             takeOutMoney(TransactionTypes.transfer_out, amount);
             addMoney(TransactionTypes.transfer_in, receiver, amount);
@@ -184,9 +184,9 @@ public class UserPanel extends Menu {
         if (userAccount != null) {
             userAccountActions.deleteUserAccount(userAccount);
         } else {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ something went wrong ] "
-                    + ConsoleTextColors.RESET);
+                    + Colorable.RESET);
         }
     }
 }

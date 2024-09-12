@@ -5,7 +5,7 @@ package com.bankManagement.AccountManagement.DAO_Models;
  * managing his data and operations through the java program.
  */
 
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 import com.bankManagement.Features.DateFormat;
 import lombok.Getter;
 import lombok.Setter;
@@ -46,8 +46,8 @@ public class User {
 
     @Override
     public String toString() {
-        return ConsoleTextColors.BLUE_BOLD + "My data:"
-                + ConsoleTextColors.BLUE
+        return Colorable.BLUE_BOLD + "My data:"
+                + Colorable.BLUE
                 + "\nId: " + id
                 + "\nIdnp: " + idnp
                 + "\nFirstname: " + firstname
@@ -56,6 +56,6 @@ public class User {
                 + dateOfBirth.format(DateFormat.DATE_FORMAT)
                 + "\nBalance: " + balance
                 + "\nHas account: " + account + "\n\n" +
-                ConsoleTextColors.RESET;
+                Colorable.RESET;
     }
 }

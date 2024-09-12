@@ -8,7 +8,7 @@ import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.AccountManagement.DAO_Models.EmployeeAccount;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.DAO_Models.UserAccount;
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -56,9 +56,9 @@ public abstract class Login {
         if (employeeAccount == null) {
             displayErrorMessage();
         } else if (!employeeAccount.getRole().equals("administrator")) {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
             + "Error [ permission denied ] \n\n"
-            + ConsoleTextColors.RESET);
+            + Colorable.RESET);
             return null;
         } else {
             EmployeeActions employeeActions = new EmployeeActions();
@@ -69,8 +69,8 @@ public abstract class Login {
     }
 
     private static void displayErrorMessage() {
-        System.out.println(ConsoleTextColors.RED_BOLD
+        System.out.println(Colorable.RED_BOLD
                 + "Error [ wrong login or password ] \n\n"
-                + ConsoleTextColors.RESET);
+                + Colorable.RESET);
     }
 }

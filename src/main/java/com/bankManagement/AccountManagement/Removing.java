@@ -8,7 +8,6 @@ import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.AccountManagement.DAO_Models.EmployeeAccount;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.DAO_Models.UserAccount;
-import com.bankManagement.Features.ConsoleTextColors;
 
 /**
  * @Description: this is the class what provide removing account of an

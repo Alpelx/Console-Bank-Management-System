@@ -9,7 +9,7 @@ import com.bankManagement.AccountManagement.DAO_Models.EmployeeAccount;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.DAO_Models.UserAccount;
 import com.bankManagement.Features.ConsoleReading;
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 import com.bankManagement.Sources.AccountType;
 
 /**
@@ -47,9 +47,9 @@ public abstract class Registration {
     }
 
     private static void employeeErrorMessage() {
-        System.out.println(ConsoleTextColors.RED_BOLD
+        System.out.println(Colorable.RED_BOLD
                 + "Error [ Employee doesn't exist or already "
-                + "has account ]" + ConsoleTextColors.RESET);
+                + "has account ]" + Colorable.RESET);
     }
 
     private static void setEmployeeData(Employee employee,
@@ -77,9 +77,9 @@ public abstract class Registration {
     }
 
     private static void userErrorMessage() {
-        System.out.println(ConsoleTextColors.RED_BOLD
+        System.out.println(Colorable.RED_BOLD
                 + "Error [ User doesn't exist or already has account ]"
-                + ConsoleTextColors.RESET);
+                + Colorable.RESET);
     }
 
     private static void setUserData(User user, UserActions userActions) {
@@ -93,8 +93,8 @@ public abstract class Registration {
     }
 
     private static void displaySuccessMessage() {
-        System.out.println(ConsoleTextColors.GREEN_BOLD
+        System.out.println(Colorable.GREEN_BOLD
                 + "Account registered successfully"
-                + ConsoleTextColors.RESET);
+                + Colorable.RESET);
     }
 }

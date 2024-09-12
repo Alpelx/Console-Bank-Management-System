@@ -11,16 +11,16 @@ package com.bankManagement.Panels;
 
 import com.bankManagement.Sources.AccountType;
 import com.bankManagement.AccountManagement.Registration;
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 
 public class RegisterPanel extends Menu {
     @Override
     protected void showMenuList() {
-        System.out.println(ConsoleTextColors.YELLOW_BOLD
-                + "\n\n Register menu:\n" + ConsoleTextColors.YELLOW
+        System.out.println(Colorable.YELLOW_BOLD
+                + "\n\n Register menu:\n" + Colorable.YELLOW
                 + "[1] -> Register as an employee\n"
                 + "[2] -> Register as an user\n"
-                + "[0] -> Exit" + ConsoleTextColors.RESET);
+                + "[0] -> Exit" + Colorable.RESET);
     }
 
     @Override
@@ -33,15 +33,15 @@ public class RegisterPanel extends Menu {
                 Registration.registerAccount(AccountType.user);
                 break;
             case 0:
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "You have closed the register panel"
-                        + ConsoleTextColors.RESET + "\n\n");
+                        + Colorable.RESET + "\n\n");
                 return false;
             case -1:
                 return true;
             default:
-                System.out.println(ConsoleTextColors.RED_BOLD
-                        + "Error [ Wrong input ]" + ConsoleTextColors.RESET);
+                System.out.println(Colorable.RED_BOLD
+                        + "Error [ Wrong input ]" + Colorable.RESET);
                 System.out.println();
                 break;
         }

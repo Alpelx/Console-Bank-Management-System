@@ -1,21 +1,31 @@
-# Table of contents
-### 1. [Introduction](../project-report.md#1-introduction)
-### 2. [Objectives](../project-report.md#objectives)
-### 3. [Scopes](../project-report.md#scope)
-### 4. [Problem Definition](./problem-definition.md)
-### 5. [Application Structure](./system-design.md#application-structure)
-### 6. [Technologies used](./system-design.md#technologies-used)
-### 7. [Architecure and Design](./system-design.md#architecture-and-design)  
----------------------------------
-<br><br><br>
-
 # System design
+
+## Table of contents
+
+### 1. [Introduction](../project-report.md#1-introduction)
+
+### 2. [Objectives](../project-report.md#objectives)
+
+### 3. [Scopes](../project-report.md#scope)
+
+### 4. [Problem Definition](./problem-definition.md)
+
+### 5. [Application Structure](./system-design.md#application-structure)
+
+### 6. [Technologies used](./system-design.md#technologies-used)
+
+### 7. [Architecure and Design](./system-design.md#architecture-and-design) 
+
+### 8. [Program screenshots results](./result-screenshoots.md) 
+
+---
+<br><br><br>
 
 ## Application Structure
 
-### 1. **Roles and Functionality**:
+### 1. **Roles and Functionality**
 
- **Employee**:
+**Employee**:
 
  1. Display my data.
  2. Dismis from work.
@@ -34,8 +44,8 @@
    >9.1 certain user.  
    >9.2 For whole bank.
 
-
 **User**:
+
 1. Display info about me
 2. Check my account balance
 3. Make a deposit
@@ -43,20 +53,27 @@
 5. Make a transfer to another user
 6. Remove my account
 
+---
+<br><br><br>
 
+## Technologies used
 
-## Technologies used:
 * **Languages used:** JAVA SE
-* **Big APIs:** JDBC 
+* **Big APIs:** JDBC
 * **Tools:**
-    - **Project management:** Notion
-    - **Version control:** git
-    - **Design:** no tools for design because it is a console application
+  * **Project management:** Notion
+  * **Version control:** git
+  * **Design:** no tools for design because it is a console application
 * **Database:** I used mySql database for working with JDBC API.
-* **Design database:**
+* **Design database:**  
+
     !["Database Entity-Relationship Diagram (ERD)"](../img/ERD.png)
-    
+
+---
+<br><br><br>
+
 ## Architecture and design
+
 ### **System Architecture**
 
 ```mermaid
@@ -87,6 +104,10 @@ LE --> EP(Employee panel)
 AP & EP & UP -- DAO ---> ET
 ```
 
-### Design patterns:
-* __Singleton pattern:__ Used in MySql.java for handling centralized connection with the database.
-* __DAO pattern:__ The UserDAO interface, with other DAO interfaces that may be in the project, will abstract database operations relating to different entities—in this case, users, employees, and transactions.
+### Design patterns
+
+* **Singleton pattern:** Used in MySql.java for handling centralized connection with the database.
+* **DAO pattern:** The UserDAO interface, with other DAO interfaces that may be in the project, will abstract database operations relating to different entities—in this case, users, employees, and transactions.
+
+---
+<br><br><br>

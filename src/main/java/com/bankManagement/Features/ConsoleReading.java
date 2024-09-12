@@ -15,20 +15,20 @@ public abstract class ConsoleReading {
     public static final Scanner SCANNER = new Scanner(System.in);
 
     public static @NotNull String readString(String x) {
-        System.out.print(ConsoleTextColors.GREEN_BOLD + x
-                + ConsoleTextColors.RESET);
+        System.out.print(Colorable.GREEN_BOLD + x
+                + Colorable.RESET);
         return SCANNER.next();
     }
 
     public static int readInt(String x) {
-        System.out.print(ConsoleTextColors.GREEN_BOLD + x
-                + ConsoleTextColors.RESET);
+        System.out.print(Colorable.GREEN_BOLD + x
+                + Colorable.RESET);
         return SCANNER.nextInt();
     }
 
     public static double readDouble(String x) {
-        System.out.print(ConsoleTextColors.GREEN_BOLD + x
-                + ConsoleTextColors.RESET);
+        System.out.print(Colorable.GREEN_BOLD + x
+                + Colorable.RESET);
         return SCANNER.nextDouble();
     }
 
@@ -41,9 +41,9 @@ public abstract class ConsoleReading {
                 dateOfBirth = LocalDate.parse(dateOfBirthStr);
                 break;
             } catch (DateTimeParseException e) {
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "Invalid format or date"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
             }
         }
         return dateOfBirth;

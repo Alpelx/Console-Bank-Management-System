@@ -9,7 +9,7 @@ package com.bankManagement.Panels;
 
 import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.AccountManagement.Removing;
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 
 public class EmployeePanel extends Menu {
     private final Employee employee;
@@ -20,12 +20,12 @@ public class EmployeePanel extends Menu {
 
     @Override
     protected void showMenuList() {
-        System.out.println(ConsoleTextColors.CYAN_BOLD
-                + "\n\nEmployee Panel:\n" + ConsoleTextColors.CYAN
+        System.out.println(Colorable.CYAN_BOLD
+                + "\n\nEmployee Panel:\n" + Colorable.CYAN
                 + "[1] -> Display my data\n"
                 + "[2] -> Dismiss from work\n"
                 + "[0] -> Close employee panel"
-                + ConsoleTextColors.RESET);
+                + Colorable.RESET);
     }
 
     @Override
@@ -36,21 +36,21 @@ public class EmployeePanel extends Menu {
                 break;
             case 2:
                 Removing.removeEmployee(employee);
-                System.out.println(ConsoleTextColors.GREEN_BOLD
+                System.out.println(Colorable.GREEN_BOLD
                         + "Employee removed successfully"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
                 return false;
             case 0:
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "You have closed the employee panel"
-                        + ConsoleTextColors.RESET + "\n\n");
+                        + Colorable.RESET + "\n\n");
                 return false;
             case -1:
                 break;
             default:
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "Error [ Wrong input ]"
-                        + ConsoleTextColors.RESET + "\n");
+                        + Colorable.RESET + "\n");
                 break;
         }
         return true;

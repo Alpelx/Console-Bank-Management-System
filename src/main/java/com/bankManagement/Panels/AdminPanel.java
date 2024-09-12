@@ -16,7 +16,7 @@ import com.bankManagement.AccountManagement.DAO_Models.Transaction;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.Removing;
 import com.bankManagement.Features.ConsoleReading;
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
@@ -37,8 +37,8 @@ public class AdminPanel extends Menu {
 
     @Override
     protected void showMenuList() {
-        System.out.println(ConsoleTextColors.CYAN_BOLD
-                + "\n\nAdmin Panel\n" + ConsoleTextColors.RESET
+        System.out.println(Colorable.CYAN_BOLD
+                + "\n\nAdmin Panel\n" + Colorable.RESET
                 + "[1] -> Display data about users\n"
                 + "[2] -> Display data about employees\n"
                 + "[3] -> Register an user\n"
@@ -49,7 +49,7 @@ public class AdminPanel extends Menu {
                 + "[8] -> Revoke admin from an employee\n"
                 + "[9] -> Display whole transaction history"
                 + "[10] -> Display an user's transaction history\n"
-                + ConsoleTextColors.RESET);
+                + Colorable.RESET);
     }
 
     @Override
@@ -86,16 +86,16 @@ public class AdminPanel extends Menu {
                 displayUserTransactions();
                 break;
             case 0:
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "You have closed the admin panel"
-                        + ConsoleTextColors.RESET + "\n\n");
+                        + Colorable.RESET + "\n\n");
                 return false;
             case -1:
                 break;
             default:
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "Error [ Wrong input ]"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
                 System.out.println();
                 break;
         }
@@ -106,7 +106,7 @@ public class AdminPanel extends Menu {
         List<User> users = userActions.getAllUsers();
         users.forEach(System.out::println);
         if (users.isEmpty()) {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ users not found ]");
         }
     }
@@ -115,7 +115,7 @@ public class AdminPanel extends Menu {
         List<Employee> employees = employeeActions.getAllEmployees();
         employees.forEach(System.out::println);
         if (employees.isEmpty()) {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ employees not found ]");
         }
     }
@@ -197,9 +197,9 @@ public class AdminPanel extends Menu {
             EmployeeAccount employeeAccount = employeeAccountActions
                     .getEmployeeAccount(employee.getId());
             if (employeeAccount == null) {
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "Employee does not have account"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
             } else {
                 employeeAccount.setRole("administrator");
                 employeeAccountActions.updateAccount(employeeAccount);
@@ -217,9 +217,9 @@ public class AdminPanel extends Menu {
             EmployeeAccount employeeAccount = employeeAccountActions
                     .getEmployeeAccount(employee.getId());
             if (employeeAccount == null) {
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "Employee does not have account"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
             } else {
                 employeeAccount.setRole("regular");
                 employeeAccountActions.updateAccount(employeeAccount);
@@ -231,9 +231,9 @@ public class AdminPanel extends Menu {
         List<Transaction> transactions = transactionActions
                 .getAllTransactions();
         if (transactions.isEmpty()) {
-            System.out.println(ConsoleTextColors.RED_BOLD
+            System.out.println(Colorable.RED_BOLD
                     + "Error [ no transactions found ]"
-                    + ConsoleTextColors.RESET);
+                    + Colorable.RESET);
             return;
         }
         transactions.forEach(System.out::println);
@@ -249,9 +249,9 @@ public class AdminPanel extends Menu {
             List<Transaction> transactions = transactionActions
                     .getTransactionsByAccountId(user.getId());
             if (transactions.isEmpty()) {
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "Error [ no transactions found ]"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
                 return;
             }
             transactions.forEach(System.out::println);
@@ -259,8 +259,8 @@ public class AdminPanel extends Menu {
     }
 
     private void displayErrorMessage() {
-        System.out.println(ConsoleTextColors.RED_BOLD
+        System.out.println(Colorable.RED_BOLD
                 + "Error [ wrong login or password ] \n\n"
-                + ConsoleTextColors.RESET);
+                + Colorable.RESET);
     }
 }

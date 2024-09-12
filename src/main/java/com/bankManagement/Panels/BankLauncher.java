@@ -14,19 +14,19 @@ import com.bankManagement.AccountManagement.DAO_Models.Employee;
 import com.bankManagement.AccountManagement.DAO_Models.User;
 import com.bankManagement.AccountManagement.Login;
 import com.bankManagement.Features.ConsoleReading;
-import com.bankManagement.Features.ConsoleTextColors;
+import com.bankManagement.Features.Colorable;
 
 public class BankLauncher extends Menu {
     @Override
     protected void showMenuList() {
-        System.out.println(ConsoleTextColors.PURPLE_BOLD
-                + "WELCOME TO OUR BANK!\n" + ConsoleTextColors.PURPLE
+        System.out.println(Colorable.PURPLE_BOLD
+                + "WELCOME TO OUR BANK!\n" + Colorable.PURPLE
                 + "(1) -> Log in as an employee\n"
                 + "(2) -> Log in as an admin\n"
                 + "(3) -> Log in as an user\n"
                 + "(4) -> Register an account\n"
                 + "(0) -> Exit"
-                + ConsoleTextColors.RESET);
+                + Colorable.RESET);
     }
 
     @Override
@@ -46,16 +46,16 @@ public class BankLauncher extends Menu {
                 registerPanel.run();
                 break;
             case 0:
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "You have closed the program"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
                 return false;
             case -1:
                 break;
             default:
-                System.out.println(ConsoleTextColors.RED_BOLD
+                System.out.println(Colorable.RED_BOLD
                         + "Error [ Wrong input ]"
-                        + ConsoleTextColors.RESET);
+                        + Colorable.RESET);
                 System.out.println();
                 break;
         }
