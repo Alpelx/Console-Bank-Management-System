@@ -54,16 +54,17 @@ The objective of the Bank System Management Project is to primarily develop a so
 ### Non-Functional Requirements
 
 1. **Scalability:**
-This will allow more number of accounts and transactions of the system to be handled in this growing system.
+    - This will allow more number of accounts and transactions of the system to be handled in this growing system.
 
 2. **Security:**
 Avoid unauthorized entry and ensure data integrity.
 
 3. **User-friendliness:**
-An intuitive interface assists in easy navigation and allows the user to administer the system without hardship. Error messages and instructions are visible and clear to the user.
+    -An intuitive interface assists in easy navigation and allows the user to administer the system without hardship.
+    - Error messages and instructions are visible and clear to the user.
 
 4. **Reliability:**
-Information is consistent and accurate, most especially in transactions and provides for rollback in case the process of a transaction was erroneous.
+    -Information is consistent and accurate, most especially in transactions and provides for rollback in case the process of a transaction was erroneous.
 
 ---
 
