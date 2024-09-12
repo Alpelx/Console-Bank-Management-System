@@ -49,7 +49,7 @@ The objective of the Bank System Management Project is to primarily develop a so
 
 5. **Reporting:**
 
-- Prepare transaction reports, daily summaries, and account statements.
+    - Prepare transaction reports, daily summaries, and account statements.
 
 ### Non-Functional Requirements
 
