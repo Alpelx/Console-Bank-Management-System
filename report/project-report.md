@@ -24,6 +24,8 @@
 
 ### 8. [Program screenshots results](./pages/result-screenshoots.md)
 
+### 9. [Conclusion](./pages/conclusion.md)
+
 ---
 
 ## Introduction

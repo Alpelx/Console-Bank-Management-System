@@ -18,6 +18,8 @@
 
 ### 8. [Program screenshots results](./result-screenshoots.md)
 
+### 9. [Conclusion](./conclusion.md)
+
 ## Project Definition: Overview of Bank System Management
 
 The objective of the Bank System Management Project is to primarily develop a software application that shall support conducting general bank operations such as account opening, depositing and withdrawing money, balance enquiry, and maintenance of account transaction history. The project will employ Java's JDBC API in conjunction with a DAO design pattern in a manner such that business logic remains entirely insulated and independent from the data access layer of any application. Automation of routine banking activities with minimal human error and efficiency of operation will receive more attention in creating an effective, secure, but friendly system.  

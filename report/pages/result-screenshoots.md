@@ -18,6 +18,8 @@
 
 ### 8. [Program screenshots results](./result-screenshoots.md)
 
+### 9. [Conclusion](./conclusion.md)
+
 ---
 
 ## Launching the program (main panel)
