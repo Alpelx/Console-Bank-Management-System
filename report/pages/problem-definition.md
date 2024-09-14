@@ -18,9 +18,7 @@
 
 ### 8. [Program screenshots results](./result-screenshoots.md)
 
-### 9. [Video result](./result-video.md)
-
-### 10. [Conclusion](./conclusion.md)
+### 9. [Conclusion](./conclusion.md)
 
 ## Project Definition: Overview of Bank System Management
 
